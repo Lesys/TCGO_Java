@@ -4,14 +4,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import carte.CartePerso;
-import carte.CarteSort;
 import zone.Terrain;
-import zone.ZoneSort;
-import zone.ZoneTerrain;
-import zone.ZoneTerrainAttaque;
-import zone.ZoneTerrainDefense;
-
 public class TerrainView extends JPanel{
 	/**
 	 * 

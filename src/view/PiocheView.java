@@ -5,7 +5,6 @@ import java.awt.TextField;
 
 import javax.swing.JPanel;
 
-import carte.CartePerso;
 import ensemble.Pioche;
 import images.ImagePanel;
 

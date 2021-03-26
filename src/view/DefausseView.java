@@ -1,13 +1,11 @@
 package view;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.awt.TextField;
 
 import javax.swing.JPanel;
 
-import carte.CartePerso;
 import ensemble.Defausse;
-import ensemble.Main;
 
 public class DefausseView extends JPanel {
 
@@ -21,7 +19,8 @@ public class DefausseView extends JPanel {
 	public DefausseView(Defausse defausse) {
 		this.defausse = defausse;
 		//this.testMainView();
+		this.setLayout(new BorderLayout());
 		
-		this.add(new TextField(Integer.toString(defausse.size())));
+		this.add(new TextField(Integer.toString(this.defausse.size())));
 	}
 }

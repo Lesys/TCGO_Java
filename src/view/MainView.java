@@ -4,7 +4,6 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import carte.CartePerso;
 import ensemble.Main;
 
 public class MainView extends JPanel {

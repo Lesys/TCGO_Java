@@ -1,24 +1,16 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
-import javax.management.DescriptorKey;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import carte.CarteHeros;
-import ensemble.Defausse;
-import ensemble.Main;
-import ensemble.Pioche;
-import ensemble.ZoneBannie;
 import jeu.ButtonExecuter;
 import jeu.Fenetre;
 import jeu.Jeu;
 import jeu.Observateur;
-import zone.Terrain;
 import joueur.Joueur;
 
 public class JoueurView extends JPanel implements Observateur, ActionListener, Fenetre {

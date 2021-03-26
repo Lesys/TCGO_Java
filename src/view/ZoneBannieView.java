@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.TextField;
 
 import javax.swing.JPanel;
@@ -17,7 +18,8 @@ public class ZoneBannieView extends JPanel {
 	public ZoneBannieView(ZoneBannie zoneBannie) {
 		this.zoneBannie = zoneBannie;
 		//this.testMainView();
+		this.setLayout(new BorderLayout());
 		
-		this.add(new TextField(Integer.toString(zoneBannie.size())));
+		this.add(new TextField(Integer.toString(this.zoneBannie.size())));
 	}
 }
