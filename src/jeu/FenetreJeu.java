@@ -95,8 +95,8 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		this.plateauJoueur2.add(new TextField("Zone Sort 2 joueur 2"));
 		this.plateauJoueur2.add(new TextField("Zone Defense joueur 2"));
 		this.plateauJoueur2.add(new TextField("Zone Sort 1 joueur 2"));*/
-		TerrainView terrainViewJ1 = new TerrainView(false);
-		TerrainView terrainViewJ2 = new TerrainView(true);
+		TerrainView terrainViewJ1 = new TerrainView("Terrain j1", false);
+		TerrainView terrainViewJ2 = new TerrainView("Terrain j2", true);
 		this.plateauJoueur1.add(terrainViewJ1);
 		this.plateauJoueur1.add(terrainViewJ2);
 		
