@@ -89,4 +89,8 @@ public class CartePerso extends CarteJeu {
 		return this.reference + ";" + this.nbExemplaire + ";Perso;" + this.nom + ";" + this.anime + ";"
 			+ this.attaque + ";" + this.pv + ";" + this.cout + ";" + this.effet;
 	}
+	
+	public static CarteJeu creationCarteTest() {
+		return new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
+	}
 }

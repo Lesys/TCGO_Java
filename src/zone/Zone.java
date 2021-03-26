@@ -2,8 +2,6 @@ package zone;
 
 import java.util.*;
 
-import javax.swing.JPanel;
-
 import carte.CarteJeu;
 import zone.etatZone.EtatZone;
 

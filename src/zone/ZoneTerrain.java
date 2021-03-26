@@ -1,9 +1,5 @@
 package zone;
 
-import java.awt.GridLayout;
-
-import javax.swing.JPanel;
-
 import carte.Carte;
 import carte.CartePerso;
 import zone.etatZone.EtatZone;
@@ -25,7 +21,7 @@ public abstract class ZoneTerrain extends Zone {
 	public void poserCarte(CartePerso carte) {
 		super.poserCarte(carte, 3);
 		
-		System.out.println("Cartes: " + this.cartes.size());
+		//System.out.println("Cartes: " + this.cartes.size());
 	}
 	
 	public void changerEtatZone() {

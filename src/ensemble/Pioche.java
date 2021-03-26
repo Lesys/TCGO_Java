@@ -29,6 +29,10 @@ public class Pioche extends EnsembleCarte {
 		return this.cartes.pop();
 	}
 	
+	public int getNbCartesRestantes() {
+		return this.cartes.size();
+	}
+	
 	@Override
 	public void ajouterCarte(CarteJeu carte) {
 		/*try {

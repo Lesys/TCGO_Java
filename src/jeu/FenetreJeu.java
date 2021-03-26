@@ -19,6 +19,7 @@ import carte.CartePerso;
 import effet.StrategieEffet;
 import effet.StrategieEffetBonusPersoMemeZone;
 import joueur.*;
+import view.PiocheView;
 import view.TerrainView;
 import view.ZoneTerrainView;
 import zone.ZoneTerrain;
@@ -67,10 +68,10 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		center.setLayout(new GridLayout(2, 1));
 		
 		this.plateauJoueur1 = new JPanel();
-		this.plateauJoueur1.setLayout(new GridLayout(2, 2));
+		this.plateauJoueur1.setLayout(new GridLayout(1, 2));
 		
 		this.plateauJoueur2 = new JPanel();
-		this.plateauJoueur2.setLayout(new GridLayout(2, 2));
+		this.plateauJoueur2.setLayout(new GridLayout(1, 2));
 
 		center.add(this.plateauJoueur1);
 		center.add(this.plateauJoueur2);
@@ -97,8 +98,12 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		this.plateauJoueur2.add(new TextField("Zone Sort 1 joueur 2"));*/
 		TerrainView terrainViewJ1 = new TerrainView("Terrain j1", false);
 		TerrainView terrainViewJ2 = new TerrainView("Terrain j2", true);
+		PiocheView piocheViewJ1 = new PiocheView();
+		PiocheView piocheViewJ2 = new PiocheView();
+		this.plateauJoueur1.add(piocheViewJ1);
 		this.plateauJoueur1.add(terrainViewJ1);
-		this.plateauJoueur1.add(terrainViewJ2);
+		this.plateauJoueur2.add(terrainViewJ2);
+		this.plateauJoueur2.add(piocheViewJ2);
 		
 		// Fin tests
 

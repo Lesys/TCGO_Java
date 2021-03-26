@@ -41,9 +41,11 @@ public abstract class EnsembleCarte {
 			// Ajoute la carte remise à zéro
 			carte.reinitialisation();
 			this.cartes.add(carte);
+			System.out.println("Carte" + carte.getNom() + " ajoutée");
 		} catch (ExemplaireMaximumException e) {
-			
+			e.printStackTrace();
 		} catch (PiochePleineException e) {
+			e.printStackTrace();
 			
 		}
 	}

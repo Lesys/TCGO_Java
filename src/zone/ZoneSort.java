@@ -3,7 +3,6 @@ package zone;
 import java.util.ArrayList;
 
 import carte.Carte;
-import carte.CartePerso;
 import carte.CarteSort;
 import zone.etatZone.EtatZoneSort;
 
