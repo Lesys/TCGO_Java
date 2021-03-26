@@ -80,8 +80,9 @@ public class JeuUI extends JPanel implements Observateur, ActionListener, Fenetr
 		topButtons.add(this.jouerButton);//, BorderLayout.NORTH);
 		//topButtons.add(this.slider, BorderLayout.CENTER);
 		
-
-		this.window.setVisible(true);
+		FenetreJeu fen = new FenetreJeu();
+		fen.setVisible(true);
+		//this.window.setVisible(true);
 	}
 
 	/** Accesseur (getter) sur le jeu de la vie

@@ -2,6 +2,8 @@ package zone;
 
 import java.util.*;
 
+import javax.swing.JPanel;
+
 import carte.CarteJeu;
 import zone.etatZone.EtatZone;
 
@@ -11,6 +13,13 @@ public abstract class Zone implements Iterable<CarteJeu> {
 	
 	public Zone(EtatZone etatZone) {
 		this.etatZone = etatZone;
+	}
+	
+	protected void poserCarte(CarteJeu carte, int max) {
+		if (this.cartes.size() < max)
+			this.cartes.add(carte);
+		else
+			System.out.println("La capacité maximale a été atteinte pour la zone");
 	}
 	
 	@Override

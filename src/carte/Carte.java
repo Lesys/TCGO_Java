@@ -1,8 +1,9 @@
 package carte;
 import effet.StrategieEffet;
+import images.ImagePanel;
 
 
-public abstract class Carte implements Cloneable {
+public abstract class Carte extends ImagePanel implements Cloneable {
 	protected String reference;
 	protected String nom;
 	protected String anime;
@@ -19,6 +20,8 @@ public abstract class Carte implements Cloneable {
 	 * @param nbExemplaire	Le nombre d'exemplaire maximum de cette carte dans un deck
 	 */
 	public Carte(String reference, String nom, String anime, StrategieEffet effet, int nbExemplaire) {
+		//super(reference);
+		super(reference);
 		this.reference = reference;
 		this.nom = nom;
 		this.anime = anime;

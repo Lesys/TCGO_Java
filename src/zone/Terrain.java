@@ -6,13 +6,15 @@ public class Terrain {
 	private String nom;
 	private ZoneTerrain zoneAttaque;
 	private ZoneTerrain zoneDefense;
-	private ZoneSort zoneSort;
+	private ZoneSort zoneSort1;
+	private ZoneSort zoneSort2;
 	
 	public Terrain(String nom) {
 		this.nom = nom;
 		this.zoneAttaque = new ZoneTerrainAttaque();
 		this.zoneDefense = new ZoneTerrainDefense();
-		this.zoneSort = new ZoneSort();
+		this.zoneSort1 = new ZoneSort();
+		this.zoneSort2 = new ZoneSort();
 	}
 	
 	/** Réinitialise toutes les cartes sur le terrain (== début du tour)
@@ -25,7 +27,10 @@ public class Terrain {
 		for (CarteJeu c : this.zoneDefense)
 			c.getEffet().effetDebutTour();
 
-		for (CarteJeu c : this.zoneSort)
+		for (CarteJeu c : this.zoneSort1)
+			c.getEffet().effetDebutTour();
+
+		for (CarteJeu c : this.zoneSort2)
 			c.getEffet().effetDebutTour();
 	}
 }
