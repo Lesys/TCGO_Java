@@ -1,4 +1,4 @@
-package jeu;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -9,30 +9,41 @@ import javax.management.DescriptorKey;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import carte.CarteHeros;
 import ensemble.Defausse;
 import ensemble.Main;
 import ensemble.Pioche;
 import ensemble.ZoneBannie;
+import jeu.ButtonExecuter;
+import jeu.Fenetre;
+import jeu.Jeu;
+import jeu.Observateur;
 import zone.Terrain;
 import joueur.Joueur;
 
-public class JPanelJoueur extends JPanel implements Observateur, ActionListener, Fenetre {
+public class JoueurView extends JPanel implements Observateur, ActionListener, Fenetre {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1262185793171937958L;
 	/** Le joueur à qui appartient ce JPanel
 	 * 
 	 * @joueur Joueur
 	 */
 	private Joueur joueur;
-	private Terrain terrain;
-	private Pioche deck;
-	private Main main;
-	private Defausse defausse;
-	private ZoneBannie zoneBannie;
+	private TerrainView terrainView;
+	private MainView mainView;
+	private PiocheView piocheView;
+	private DefausseView defausseView;
+	private ZoneBannieView zoneBannieView;
+	
+	private CarteHerosView carteHerosView;
 	
 	private JFrame window;
 	
-	public JPanelJoueur(Jeu jeu) {
-		this.jeu = jeu;
-
+	public JoueurView(Jeu jeu) {
+		//this.jeu = jeu;
+/*
 		this.window = new JFrame();
 		// Définit un titre pour notre fenêtre
 		this.window.setTitle("Jeu de la vie");
@@ -46,14 +57,14 @@ public class JPanelJoueur extends JPanel implements Observateur, ActionListener,
 		
 		// Définit sa taille
 		//this.window.setSize(this.tailleCellule * jeu.getXMax() + 200, this.window.getInsets().top + this.tailleCellule * jeu.getYMax() + 200);
-		this.window.setSize(1000, 1000);
-
+		this.window.setSize(1000, 1000);*/
+/*
 		this.choixJoueursButton = new ButtonExecuter("Choisir joueurs", StrategieButtonChoixJoueurs.getInstance());
 		this.choixJoueursButton.addActionListener(this);
 
 		this.jouerButton = new ButtonExecuter("Lancer le jeu", StrategieButtonChoixJoueurs.getInstance());
 		this.jouerButton.addActionListener(this);
-
+*/
 		/*this.slider = new JSlider(1, 10);
 		this.slider.setPaintLabels(true);
 		this.slider.addChangeListener(new ChangeListener() {
@@ -61,7 +72,7 @@ public class JPanelJoueur extends JPanel implements Observateur, ActionListener,
 				jeu.setTempsPause(slider.getValue());
 			}
 		});*/
-		
+		/*
 		JPanel buttons, topButtons;
 		this.window.getContentPane().add(buttons = new JPanel());
 
@@ -72,19 +83,85 @@ public class JPanelJoueur extends JPanel implements Observateur, ActionListener,
 		topButtons.add(this.choixJoueursButton);
 		topButtons.add(this.jouerButton);//, BorderLayout.NORTH);
 		//topButtons.add(this.slider, BorderLayout.CENTER);
-		
+		*/
 
-		this.window.setVisible(true);
+		//this.window.setVisible(true);
+	}
+	
+	public JoueurView(int num) {
+		this.joueur = Joueur.initTest();
+		
+		this.piocheView = new PiocheView(this.joueur.getPioche());
+		
+		this.mainView = new MainView(this.joueur.getMain());
+
+		this.defausseView = new DefausseView(this.joueur.getDefausse());
+
+		this.zoneBannieView = new ZoneBannieView(this.joueur.getZoneBanie());
+		
+		this.carteHerosView = new CarteHerosView(this.joueur.getHeros());
+		//this.add(this.carteHerosView);
+		this.setLayout(new GridLayout(2, 1));
+		
+		JPanel mainHeros = new JPanel();
+		mainHeros.setLayout(new GridLayout(2, 1));
+		
+		JPanel plateau = new JPanel();
+		plateau.setLayout(new GridLayout(1, 2));
+		
+		JPanel piocheDefausse = new JPanel();
+		piocheDefausse.setLayout(new GridLayout(2, 1));
+		
+		JPanel defausseBannie = new JPanel();
+		defausseBannie.setLayout(new GridLayout(1, 2));
+
+		
+		if (num == 1) {
+
+			this.terrainView = new TerrainView(this.joueur.getTerrain(), false);
+			
+
+			mainHeros.add(this.carteHerosView);
+			mainHeros.add(this.mainView);
+			this.add(mainHeros);
+			this.add(plateau);
+			plateau.add(piocheDefausse);
+			plateau.add(this.terrainView);
+
+			piocheDefausse.add(this.piocheView);
+			
+			defausseBannie.add(this.zoneBannieView);
+			defausseBannie.add(this.defausseView);
+			piocheDefausse.add(defausseBannie);
+			
+		}
+		else {
+
+			this.terrainView = new TerrainView(this.joueur.getTerrain(), true);
+
+			piocheDefausse.add(defausseBannie);
+			defausseBannie.add(this.defausseView);
+			defausseBannie.add(this.zoneBannieView);
+			
+			piocheDefausse.add(this.piocheView);
+			
+			plateau.add(this.terrainView);
+			plateau.add(piocheDefausse);
+			this.add(plateau);
+			this.add(mainHeros);
+			mainHeros.add(this.mainView);
+			mainHeros.add(this.carteHerosView);
+		}
 	}
 
 	/** Accesseur (getter) sur le jeu de la vie
 	 * 
 	 * @return		Le jeu de la vie joué
 	 */
-	public Jeu getJeu() {
+	/*public Jeu getJeu() {
 		return this.jeu;
 	}
-
+*/
 	/** Accesseur (getter) sur la fenêtre principale
 	 * 
 	 * @return		La fenêtre principale
@@ -97,9 +174,9 @@ public class JPanelJoueur extends JPanel implements Observateur, ActionListener,
 	 *  
 	 *  @return		Le bouton d'exécution de l'interface graphique
 	 */
-	public ButtonExecuter getChoixJoueursButton() {
+	/*public ButtonExecuter getChoixJoueursButton() {
 		return this.choixJoueursButton;
-	}
+	}*/
 	
 	/** Permet d'activer certaines fonctionnalités lorsqu'il y a une action sur certains éléments
 	 * 

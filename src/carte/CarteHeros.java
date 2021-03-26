@@ -31,7 +31,7 @@ public class CarteHeros extends Carte {
 	
 	/** Calcul l'énergie supplémentaire que devrait avoir le joueur
 	 * 
-	 * @return		L'énergie supplémentaire en fonction des PV de cet héros
+	 * @return		L'énergie supplémentaire en fonction des PV de ce héros
 	 */
 	public int getNbEnergie() {
 		// 5 == le nombre de paliers d'énergie (en comptant le palier 
@@ -46,12 +46,17 @@ public class CarteHeros extends Carte {
 	
 	@Override
 	public String toString() {
-		return "";
+		return "Carte héros: " + this.reference;
 	}
 	
 	@Override
 	public String toStringSave() {
 		return this.reference + ";" + this.nbExemplaire + ";Héros;" + this.nom + ";" + this.anime + ";"
 			+ "X;" + this.pv + ";" + "X;" + this.effet;
+	}
+	
+	public static CarteHeros initTest() {
+		return new CarteHeros("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "Héros de test", "anime", null, 4);
+		
 	}
 }

@@ -1,4 +1,5 @@
 package ensemble;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -31,17 +32,17 @@ public abstract class EnsembleCarte {
 	public void ajouterCarte(CarteJeu carte) {
 		try {
 			// Si la carte est déjà en nombre trop limité d'exemplaire
-			if (this.count(carte) >= carte.getNbExemplaire())
+			if (false)//this.count(carte) >= carte.getNbExemplaire()) // TODO Remettre
 				throw new ExemplaireMaximumException("La carte " + carte.getNom() + " est déjà en exemplaire maximum dans le deck " + this.nom);
 			
 			// Si cet ensemble est plein
-			else if (this.cartes.size() >= Pioche.tailleDeck)
+			else if (false) //this.cartes.size() >= Pioche.tailleDeck)// TODO Remettre
 				throw new PiochePleineException(this.nom);
 			
 			// Ajoute la carte remise à zéro
 			carte.reinitialisation();
 			this.cartes.add(carte);
-			System.out.println("Carte" + carte.getNom() + " ajoutée");
+			//System.out.println("Carte" + carte.getNom() + " ajoutée");
 		} catch (ExemplaireMaximumException e) {
 			e.printStackTrace();
 		} catch (PiochePleineException e) {
@@ -91,5 +92,13 @@ public abstract class EnsembleCarte {
 	 */
 	public boolean estVide() {
 		return this.cartes.isEmpty();
+	}
+	
+	public Iterator<CarteJeu> iterator() {
+		return this.cartes.iterator();
+	}
+	
+	public int size() {
+		return this.cartes.size();
 	}
 }

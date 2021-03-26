@@ -1,12 +1,11 @@
 package ensemble;
 import java.util.*;
 import carte.CarteJeu;
+import carte.CartePerso;
 
 public class Pioche extends EnsembleCarte {
 	public static final int nbMaxExemplaire = 3;
 	public static final int tailleDeck = 40;
-	public static final int debutMain = 5;
-	public static final int maxMain = 7;
 	
 	public Pioche(String nom) {
 		super("Pioche de " + nom);
@@ -28,10 +27,10 @@ public class Pioche extends EnsembleCarte {
 	public CarteJeu piocher() throws NoSuchElementException {
 		return this.cartes.pop();
 	}
-	
+	/*
 	public int getNbCartesRestantes() {
 		return this.cartes.size();
-	}
+	}*/
 	
 	@Override
 	public void ajouterCarte(CarteJeu carte) {
@@ -80,4 +79,13 @@ public class Pioche extends EnsembleCarte {
 		return this.cartes.stream().filter(c -> c instanceof CarteHeros)
 			.count() == 1 ? true : false;
 	}*/
+	
+	public static Pioche initTest() {
+		Pioche pioche = new Pioche("Pioche de test");
+
+		for (int i = 0; i < 30; i++)
+			pioche.ajouterCarte(CartePerso.creationCarteTest());
+		
+		return pioche;
+	}
 }

@@ -17,8 +17,6 @@ public class Terrain {
 		this.zoneDefense = new ZoneTerrainDefense();
 		this.zoneSort1 = new ZoneSort();
 		this.zoneSort2 = new ZoneSort();
-		
-		this.initTest();
 	}
 	
 	/** Réinitialise toutes les cartes sur le terrain (== début du tour)
@@ -54,7 +52,9 @@ public class Terrain {
 		return this.zoneSort2;
 	}
 	
-	private void initTest() {
+	public static void initTest() {
+		Terrain terrain = new Terrain("Terrain de test");
+		
 		CartePerso carteTest = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
 		CartePerso carteTest2 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png", "nom", "anime", null, 1, 5, 2, 3);
 		CartePerso carteTest3 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
@@ -63,19 +63,19 @@ public class Terrain {
 		CartePerso carteTest6 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
 		CarteSort carteSort = new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 3);
 
-		this.zoneSort1.poserCarte(carteSort);
+		terrain.zoneSort1.poserCarte(carteSort);
 		
-		this.zoneSort2.poserCarte(carteSort);
+		terrain.zoneSort2.poserCarte(carteSort);
 		
 		//carteTest.repaint();
 		
-		this.zoneDefense.poserCarte(carteTest3);
-		this.zoneDefense.poserCarte(carteTest);
-		this.zoneDefense.poserCarte(carteTest2);
+		terrain.zoneDefense.poserCarte(carteTest3);
+		terrain.zoneDefense.poserCarte(carteTest);
+		terrain.zoneDefense.poserCarte(carteTest2);
 		
 		
-		this.zoneAttaque.poserCarte(carteTest4);
-		this.zoneAttaque.poserCarte(carteTest5);
-		this.zoneAttaque.poserCarte(carteTest6);
+		terrain.zoneAttaque.poserCarte(carteTest4);
+		terrain.zoneAttaque.poserCarte(carteTest5);
+		terrain.zoneAttaque.poserCarte(carteTest6);
 	}
 }

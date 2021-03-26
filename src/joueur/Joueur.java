@@ -1,6 +1,7 @@
 package joueur;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Optional;
 import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
@@ -15,6 +16,8 @@ import ensemble.ZoneBannie;
 
 
 public class Joueur {
+	public static int energieBase = 5;
+	
 	private String nom;
 	private TypeJoueur type;
 	private int energie;
@@ -22,15 +25,13 @@ public class Joueur {
 	
 	private int energieSupp;
 	
-	public static int energieBase = 5;
-	
 	private boolean abandon;
 	
 	private Terrain terrain;
 	private Main main;
 	private Pioche pioche;
 	private Defausse defausse;
-	private ZoneBannie zoneBanie;
+	private ZoneBannie zoneBannie;
 	
 	private CarteHeros heros;
 	
@@ -94,13 +95,39 @@ public class Joueur {
 		this.main = new Main(this.nom);
 		this.pioche = new Pioche(this.nom);
 		this.defausse = new Defausse(this.nom);
-		this.zoneBanie = new ZoneBannie(this.nom);
+		this.zoneBannie = new ZoneBannie(this.nom);
 		
 		this.terrain = new Terrain("Terrain de " + this.nom);
 		
 		this.reinitialisation();
 		//this.refil();
 	}
+
+	
+	public Terrain getTerrain() {
+		return this.terrain;
+	}
+
+	public Main getMain() {
+		return this.main;
+	}
+
+	public Pioche getPioche() {
+		return this.pioche;
+	}
+
+	public Defausse getDefausse() {
+		return this.defausse;
+	}
+
+	public ZoneBannie getZoneBanie() {
+		return this.zoneBannie;
+	}
+
+	public CarteHeros getHeros() {
+		return this.heros;
+	}
+
 
 	public void jouerCarte(CarteJeu carte) {
 		try {
@@ -147,5 +174,28 @@ public class Joueur {
 	@Override
 	public String toString() {
 		return "<Joueur> " + this.nom + " de type " + this.type;
+	}
+	
+	public static Joueur initTest() {
+		Joueur joueur = new Joueur("Lesys", TypeJoueurLocal.getInstance());
+
+		joueur.main = Main.initTest();
+		joueur.pioche = Pioche.initTest();
+		joueur.defausse = Defausse.initTest();
+		joueur.zoneBannie = ZoneBannie.initTest();
+		joueur.heros = CarteHeros.initTest();
+		
+		for (int i = 0; i < Main.debutMain; i++)
+			joueur.main.ajouterCarte(joueur.pioche.piocher());
+		
+		System.out.println(joueur.heros.toString());
+		//joueur.main.iterator().forEachRemaining(c -> System.out.println(c.getReference()));
+		
+		Optional<CarteJeu> carteJeu = joueur.main.recupererCarte("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg");
+		
+		if (carteJeu.isPresent())
+			joueur.defausse.ajouterCarte(carteJeu.get());
+		
+		return joueur;
 	}
 }

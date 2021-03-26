@@ -4,6 +4,11 @@ import images.ImagePanel;
 
 
 public abstract class Carte extends ImagePanel implements Cloneable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1142093430490745997L;
+	
 	protected String reference;
 	protected String nom;
 	protected String anime;
@@ -76,7 +81,7 @@ public abstract class Carte extends ImagePanel implements Cloneable {
 		
 		if (o instanceof Carte) {
 			Carte c = (Carte)o;
-			this.reference.equals(c.reference);
+			retour = this.reference.equals(c.reference);
 		}
 		
 		return retour;

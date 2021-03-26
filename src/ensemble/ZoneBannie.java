@@ -6,4 +6,9 @@ public class ZoneBannie extends EnsembleCarte {
 		super("Zone bannie de " + nom);
 	}
 
+	public static ZoneBannie initTest() {
+		ZoneBannie zoneBannie = new ZoneBannie("ZoneBannie de test");
+		
+		return zoneBannie;
+	}
 }

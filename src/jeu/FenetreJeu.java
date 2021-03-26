@@ -19,6 +19,7 @@ import carte.CartePerso;
 import effet.StrategieEffet;
 import effet.StrategieEffetBonusPersoMemeZone;
 import joueur.*;
+import view.JoueurView;
 import view.PiocheView;
 import view.TerrainView;
 import view.ZoneTerrainView;
@@ -37,6 +38,9 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 	private JPanel joueur2;
 	*/
 
+	private JoueurView joueurView1;
+	private JoueurView joueurView2;
+	
 	private JPanel plateauJoueur1;
 	private JPanel plateauJoueur2;
 
@@ -73,8 +77,10 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		this.plateauJoueur2 = new JPanel();
 		this.plateauJoueur2.setLayout(new GridLayout(1, 2));
 
-		center.add(this.plateauJoueur1);
-		center.add(this.plateauJoueur2);
+		this.joueurView1 = new JoueurView(1);
+		this.joueurView2 = new JoueurView(2);
+		center.add(this.joueurView1);
+		center.add(this.joueurView2);
 		
 		// Tests
 		// Les TextFields sont dans le bon sens (chaque joueur a sa partie 2 en dessous de la partie 1)
@@ -96,14 +102,6 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		this.plateauJoueur2.add(new TextField("Zone Sort 2 joueur 2"));
 		this.plateauJoueur2.add(new TextField("Zone Defense joueur 2"));
 		this.plateauJoueur2.add(new TextField("Zone Sort 1 joueur 2"));*/
-		TerrainView terrainViewJ1 = new TerrainView("Terrain j1", false);
-		TerrainView terrainViewJ2 = new TerrainView("Terrain j2", true);
-		PiocheView piocheViewJ1 = new PiocheView();
-		PiocheView piocheViewJ2 = new PiocheView();
-		this.plateauJoueur1.add(piocheViewJ1);
-		this.plateauJoueur1.add(terrainViewJ1);
-		this.plateauJoueur2.add(terrainViewJ2);
-		this.plateauJoueur2.add(piocheViewJ2);
 		
 		// Fin tests
 

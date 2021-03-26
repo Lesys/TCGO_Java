@@ -24,8 +24,8 @@ public class TerrainView extends JPanel{
 	private ZoneSortView zoneSort1;
 	private ZoneSortView zoneSort2;
 	
-	public TerrainView(String nomTerrain, boolean reverse) {
-		this.terrain = new Terrain(nomTerrain);
+	public TerrainView(Terrain terrain, boolean reverse) {
+		this.terrain = terrain;
 		this.zoneSort1 = new ZoneSortView(this.terrain.getZoneSort1());
 		this.zoneSort2 = new ZoneSortView(this.terrain.getZoneSort2());
 		this.zoneDefense = new ZoneTerrainView(this.terrain.getZoneDefense());

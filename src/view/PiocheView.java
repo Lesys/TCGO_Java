@@ -18,12 +18,12 @@ public class PiocheView extends JPanel {
 
 	private Pioche pioche;
 	
-	public PiocheView() {
-		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg");
-		this.pioche = new Pioche("Pioche de test");
+	public PiocheView(Pioche pioche) {
+		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
+		this.pioche = pioche;
 		
 		this.setLayout(new BorderLayout());
 		this.add(verso, BorderLayout.CENTER);
-		this.add(new TextField(Integer.toString(this.pioche.getNbCartesRestantes())), BorderLayout.SOUTH);
+		this.add(new TextField(Integer.toString(this.pioche.size())), BorderLayout.SOUTH);
 	}
 }
