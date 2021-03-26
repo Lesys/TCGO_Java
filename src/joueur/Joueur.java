@@ -164,7 +164,7 @@ public class Joueur {
 	 */
 	public void refil() {
 		// Augmente l'énergie max si la carte héros est suffisamment endommagé
-		if (this.heros.getNbEnergie() > (this.energieMax - this.energieBase))
+		if (this.heros.getNbEnergie() > (this.energieMax - Joueur.energieBase))
 			this.energieMax += this.heros.getNbEnergie();
 		
 		this.energie = this.energieMax + this.energieSupp;
@@ -188,7 +188,7 @@ public class Joueur {
 		for (int i = 0; i < Main.debutMain; i++)
 			joueur.main.ajouterCarte(joueur.pioche.piocher());
 		
-		System.out.println(joueur.heros.toString());
+		//System.out.println(joueur.heros.toString());
 		//joueur.main.iterator().forEachRemaining(c -> System.out.println(c.getReference()));
 		
 		Optional<CarteJeu> carteJeu = joueur.main.recupererCarte("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg");
