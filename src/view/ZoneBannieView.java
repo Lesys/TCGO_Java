@@ -3,11 +3,10 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.TextField;
 
-import javax.swing.JPanel;
-
 import ensemble.ZoneBannie;
+import images.ImagePanel;
 
-public class ZoneBannieView extends JPanel {
+public class ZoneBannieView extends DefaultView {
 	/**
 	 * 
 	 */
@@ -16,10 +15,13 @@ public class ZoneBannieView extends JPanel {
 	private ZoneBannie zoneBannie;
 	
 	public ZoneBannieView(ZoneBannie zoneBannie) {
+		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
 		this.zoneBannie = zoneBannie;
 		//this.testMainView();
 		this.setLayout(new BorderLayout());
+
+		this.add(verso, BorderLayout.CENTER);
 		
-		this.add(new TextField(Integer.toString(this.zoneBannie.size())));
+		this.add(new TextField(Integer.toString(this.zoneBannie.size())), BorderLayout.SOUTH);
 	}
 }

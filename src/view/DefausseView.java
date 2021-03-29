@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import ensemble.Defausse;
 import images.ImagePanel;
 
-public class DefausseView extends JPanel {
+public class DefausseView extends DefaultView {
 
 	/**
 	 * 

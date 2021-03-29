@@ -8,12 +8,13 @@ import java.util.Optional;
 import java.util.Random;
 
 import carte.CarteJeu;
+import view.IMainListener;
 import view.MainListener;
 
 
 public abstract class EnsembleCarte {	
 	protected LinkedList<CarteJeu> cartes;
-	protected List<MainListener> listeners;
+	protected List<IMainListener> listeners;
 	protected String nom;
 	
 	public EnsembleCarte(String nom) {
@@ -110,21 +111,25 @@ public abstract class EnsembleCarte {
 		return this.cartes.size();
 	}
 	
+	public String getNom() {
+		return this.nom;
+	}
+	
 	public abstract void reinitialisation();
 	
-	public void addListener(MainListener l) {
+	public void addListener(IMainListener l) {
 		this.listeners.add(l);
 	}
 
-	public void removeListener(MainListener l) {
+	public void removeListener(IMainListener l) {
 		this.listeners.remove(l);
 	}
 
 	public void onRemoveListener(CarteJeu carteRemoved) {
-		this.listeners.forEach(l -> l.removeListener(carteRemoved));
+		this.listeners.forEach(l -> l.onRemove(carteRemoved));
 	}
 	
 	public void onAddListener(CarteJeu carteAdded) {
-		this.listeners.forEach(l -> l.addListener(carteAdded));
+		this.listeners.forEach(l -> l.onAdd(carteAdded));
 	}
 }

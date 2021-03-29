@@ -31,7 +31,7 @@ public class PiocheListener implements MouseListener {
 		}			
 		else if (SwingUtilities.isLeftMouseButton(e)) {
 			try {
-				this.main.ajouterCarte(this.pioche.piocherDebutTour());
+				this.main.onAddListener(this.pioche.piocherDebutTour());
 			} catch (NullPointerException ex) {
 				System.out.println("Attendez le début du tour pour piocher");
 			} catch (NoSuchElementException ex) {

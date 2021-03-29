@@ -3,32 +3,31 @@ package view;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import ensemble.Defausse;
+import ensemble.ZoneBannie;
 
-public class DefausseListener implements MouseListener {
-	private Defausse defausse;
+public class ZoneBannieListener implements MouseListener {
+	private ZoneBannie zoneBannie;
 	
 	private WindowPopupEnsembleCarteView popup;
 	
-	public DefausseListener(Defausse defausse) {
-		this.defausse = defausse;
+	public ZoneBannieListener(ZoneBannie zoneBannie) {
+		this.zoneBannie = zoneBannie;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (!this.defausse.estVide()) {
+		if (!this.zoneBannie.estVide()) {
 			if (this.popup == null || !this.popup.isVisible()) {
-				this.popup = new WindowPopupEnsembleCarteView(this.defausse); // TODO Problème quand on retire une carte puis affiche avec clic droit (??)
+				this.popup = new WindowPopupEnsembleCarteView(this.zoneBannie); // TODO Problème quand on retire une carte puis affiche avec clic droit (??)
 				this.popup.setVisible(true);
-				System.out.println("DefausseListener !");
+				System.out.println("ZoneBannieListener !" + this.zoneBannie.size());
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(new JFrame(), this.defausse.getNom() + " est vide");
+			JOptionPane.showMessageDialog(new JFrame(), this.zoneBannie.getNom() + " est vide");
 		}
 	}
 

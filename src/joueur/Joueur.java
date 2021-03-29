@@ -120,7 +120,7 @@ public class Joueur {
 		return this.defausse;
 	}
 
-	public ZoneBannie getZoneBanie() {
+	public ZoneBannie getZoneBannie() {
 		return this.zoneBannie;
 	}
 
