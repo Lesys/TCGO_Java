@@ -10,7 +10,7 @@ public class StrategieViewAfficherProprieteCarte implements StrategieView {
 		
 	}
 	
-	public static StrategieViewAfficherProprieteCarte getInstance() {
+	public static StrategieView getInstance() {
 		if (StrategieViewAfficherProprieteCarte.instance == null)
 			StrategieViewAfficherProprieteCarte.instance = new StrategieViewAfficherProprieteCarte();
 		

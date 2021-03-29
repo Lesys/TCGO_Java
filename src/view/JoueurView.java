@@ -31,6 +31,11 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 	
 	private CarteHerosView carteHerosView;
 	
+	// Listeners
+	private PiocheListener piocheListener;
+	private MainListener mainListener;
+	private DefausseListener defausseListener;
+	
 	private JFrame window;
 	
 	public JoueurView(Jeu jeu) {
@@ -107,7 +112,7 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		JPanel defausseBannie = new JPanel();
 		defausseBannie.setLayout(new GridLayout(1, 2));
 
-		
+		// Ajout à la fenêtre pour affichage
 		if (num == 1) {
 
 			this.terrainView = new TerrainView(this.joueur.getTerrain(), false);
@@ -144,6 +149,16 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 			mainHeros.add(this.mainView);
 			mainHeros.add(this.carteHerosView);
 		}
+		
+		// Gestion des events (Listeners)
+		this.piocheListener = new PiocheListener(this.joueur.getPioche(), this.joueur.getMain());
+		this.piocheView.addMouseListener(this.piocheListener);
+		
+		this.mainListener = new MainListener(this.joueur.getMain());
+		this.mainView.addMouseListener(this.mainListener);
+
+		this.defausseListener = new DefausseListener(this.joueur.getDefausse());
+		this.defausseView.addMouseListener(this.defausseListener);
 	}
 
 	/** Accesseur (getter) sur le jeu de la vie

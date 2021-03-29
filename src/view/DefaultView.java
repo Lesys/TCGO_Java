@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 public class DefaultView extends JPanel implements MouseListener {
-
+	protected StrategieView strategieView;
 	/**
 	 * 
 	 */

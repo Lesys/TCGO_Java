@@ -6,6 +6,7 @@ import java.awt.TextField;
 import javax.swing.JPanel;
 
 import ensemble.Defausse;
+import images.ImagePanel;
 
 public class DefausseView extends JPanel {
 
@@ -17,10 +18,12 @@ public class DefausseView extends JPanel {
 	private Defausse defausse;
 	
 	public DefausseView(Defausse defausse) {
+		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
 		this.defausse = defausse;
 		//this.testMainView();
 		this.setLayout(new BorderLayout());
-		
-		this.add(new TextField(Integer.toString(this.defausse.size())));
+
+		this.add(verso, BorderLayout.CENTER);
+		this.add(new TextField(Integer.toString(this.defausse.size())), BorderLayout.SOUTH);
 	}
 }

@@ -11,4 +11,7 @@ public class ZoneBannie extends EnsembleCarte {
 		
 		return zoneBannie;
 	}
+	
+	public void reinitialisation() {
+	}
 }

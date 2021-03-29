@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import jeu.ButtonExecuter;
+import jeu.Fenetre;
 import joueur.*;
 
 public class FenetreCreationDeck extends JFrame implements ActionListener, Fenetre {
@@ -55,12 +56,12 @@ public class FenetreCreationDeck extends JFrame implements ActionListener, Fenet
 
 		center.add(joueur1);
 		center.add(joueur2);
-		
+		/*
 		this.creationJoueurs = new ButtonExecuter("Terminer", StrategieButtonCreationJoueurs.getInstance());
 		this.creationJoueurs.addActionListener(this);
 		
 		this.add(center, BorderLayout.CENTER);
-		this.add(this.creationJoueurs, BorderLayout.SOUTH);
+		this.add(this.creationJoueurs, BorderLayout.SOUTH);*/
 
 		//JPanel 
 		//joueur1.add(this.pseudoJoueur1, BorderLayout.CENTER);

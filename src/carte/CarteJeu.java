@@ -1,5 +1,8 @@
 package carte;
 import zone.ZoneTerrain;
+
+import java.awt.event.MouseEvent;
+
 import effet.StrategieEffet;
 
 
@@ -57,5 +60,11 @@ public abstract class CarteJeu extends Carte {
 	@Override
 	public String toString() {
 		return super.toString() + "";
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("Carte: " + e.getSource());
+		
 	}
 }

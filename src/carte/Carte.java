@@ -1,9 +1,15 @@
 package carte;
+import java.awt.ComponentOrientation;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.border.Border;
+
 import effet.StrategieEffet;
 import images.ImagePanel;
 
 
-public abstract class Carte extends ImagePanel implements Cloneable {
+public abstract class Carte extends ImagePanel implements Cloneable, MouseListener {
 	/**
 	 * 
 	 */
@@ -92,4 +98,33 @@ public abstract class Carte extends ImagePanel implements Cloneable {
 	 * @return		La chaîne de caractères représentant la carte
 	 */
 	public abstract String toStringSave();
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

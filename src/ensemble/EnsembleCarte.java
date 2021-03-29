@@ -1,20 +1,25 @@
 package ensemble;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
 
 import carte.CarteJeu;
+import view.MainListener;
 
 
 public abstract class EnsembleCarte {	
 	protected LinkedList<CarteJeu> cartes;
+	protected List<MainListener> listeners;
 	protected String nom;
 	
 	public EnsembleCarte(String nom) {
 		this.nom = nom;
 		this.cartes = new LinkedList<>();
+		this.listeners = new ArrayList<>();
 	}
 	
 	/** Permet de mélanger le deck aléatoirement
@@ -42,6 +47,7 @@ public abstract class EnsembleCarte {
 			// Ajoute la carte remise à zéro
 			carte.reinitialisation();
 			this.cartes.add(carte);
+			this.onAddListener(carte);
 			//System.out.println("Carte" + carte.getNom() + " ajoutée");
 		} catch (ExemplaireMaximumException e) {
 			e.printStackTrace();
@@ -63,8 +69,10 @@ public abstract class EnsembleCarte {
 		Optional<CarteJeu> op = this.cartes.stream().filter(c -> c.getReference().equals(reference))
 			.findFirst();
 		
-		if (this.cartes.remove(op.get()))
+		if (this.cartes.remove(op.get())) {
+			this.onRemoveListener(op.get());
 			this.melanger();
+		}
 		else // Normalement impossible puisqu'on prend la carte depuis l'ensemble
 			System.err.println("L'ensemble " + this.nom + " ne contient pas de carte " + op.get().getReference());
 		
@@ -100,5 +108,23 @@ public abstract class EnsembleCarte {
 	
 	public int size() {
 		return this.cartes.size();
+	}
+	
+	public abstract void reinitialisation();
+	
+	public void addListener(MainListener l) {
+		this.listeners.add(l);
+	}
+
+	public void removeListener(MainListener l) {
+		this.listeners.remove(l);
+	}
+
+	public void onRemoveListener(CarteJeu carteRemoved) {
+		this.listeners.forEach(l -> l.removeListener(carteRemoved));
+	}
+	
+	public void onAddListener(CarteJeu carteAdded) {
+		this.listeners.forEach(l -> l.addListener(carteAdded));
 	}
 }

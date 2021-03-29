@@ -81,7 +81,7 @@ public class CartePerso extends CarteJeu {
 	
 	@Override
 	public String toString() {
-		return "CartePerso: " + this.getReference();
+		return "CartePerso: nom: " + this.getNom();
 	}
 	
 	@Override

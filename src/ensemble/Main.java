@@ -14,4 +14,6 @@ public class Main extends EnsembleCarte {
 		return main;
 	}
 	
+	public void reinitialisation() {
+	}
 }

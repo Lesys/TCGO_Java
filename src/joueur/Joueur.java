@@ -99,7 +99,7 @@ public class Joueur {
 		
 		this.terrain = new Terrain("Terrain de " + this.nom);
 		
-		this.reinitialisation();
+		this.reinitialisationNouvellePartie();
 		//this.refil();
 	}
 
@@ -154,7 +154,7 @@ public class Joueur {
 	
 	/** Réinitialise le joueur pour une nouvelle partie (!= refil)
 	 */
-	public void reinitialisation() {
+	public void reinitialisationNouvellePartie() {
 		this.abandon = false;
 		this.energieMax = Joueur.energieBase;
 		this.energieSupp = 0;
@@ -169,6 +169,11 @@ public class Joueur {
 		
 		this.energie = this.energieMax + this.energieSupp;
 		this.terrain.reinitialiser();
+		this.pioche.reinitialisation();
+		this.defausse.reinitialisation();
+		this.main.reinitialisation();
+		this.zoneBannie.reinitialisation();
+		
 	}
 	
 	@Override

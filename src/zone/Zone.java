@@ -14,7 +14,7 @@ public abstract class Zone implements Iterable<CarteJeu> {
 	}
 	
 	protected void poserCarte(CarteJeu carte, int max) {
-		if (this.cartes.size() < max)
+		if (this.cartes.size() < max) // TODO Choisir l'emplacement dans ceux libres
 			this.cartes.add(carte);
 		else
 			System.out.println("La capacité maximale a été atteinte pour la zone");

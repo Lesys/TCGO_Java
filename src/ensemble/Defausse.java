@@ -11,4 +11,7 @@ public class Defausse extends EnsembleCarte {
 		
 		return defausse;
 	}
+
+	public void reinitialisation() {
+	}
 }

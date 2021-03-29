@@ -2,13 +2,17 @@ package ensemble;
 import java.util.*;
 import carte.CarteJeu;
 import carte.CartePerso;
+import effet.StrategieEffet;
 
 public class Pioche extends EnsembleCarte {
 	public static final int nbMaxExemplaire = 3;
 	public static final int tailleDeck = 40;
 	
+	private boolean debutTour;
+	
 	public Pioche(String nom) {
 		super("Pioche de " + nom);
+		this.debutTour = true;
 	}
 	
 	// Sélection d'un deck (== cartes + son héros)
@@ -26,6 +30,19 @@ public class Pioche extends EnsembleCarte {
 	 */
 	public CarteJeu piocher() throws NoSuchElementException {
 		return this.cartes.pop();
+	}
+	
+	public CarteJeu piocherDebutTour() {
+		CarteJeu cartePiochee = null;
+		
+		if (this.debutTour) {
+			cartePiochee = this.piocher();
+			this.debutTour = false;
+		}
+		else
+			System.out.println("Pas début tour Pioche");
+		
+		return cartePiochee;
 	}
 	/*
 	public int getNbCartesRestantes() {
@@ -80,12 +97,23 @@ public class Pioche extends EnsembleCarte {
 			.count() == 1 ? true : false;
 	}*/
 	
+	public boolean isDebutTour() {
+		return this.debutTour;
+	}
+	
 	public static Pioche initTest() {
 		Pioche pioche = new Pioche("Pioche de test");
 
+		//for (int i = 0; i < 2; i++)
+		//	pioche.ajouterCarte(new CartePerso(CartePerso.creationCarteTest().getReference(), "Nom nouveau", "Animé nouveau", null, 3, 6, 6, 6));
 		for (int i = 0; i < 30; i++)
 			pioche.ajouterCarte(CartePerso.creationCarteTest());
+		//pioche.ajouterCarte(new CartePerso(CartePerso.creationCarteTest().getReference(), "Nom nouveau", "Animé nouveau", null, 3, 6, 6, 6));
 		
 		return pioche;
+	}
+	
+	public void reinitialisation() {
+		this.debutTour = true;
 	}
 }

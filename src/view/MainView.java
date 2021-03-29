@@ -1,12 +1,13 @@
 package view;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
 import ensemble.Main;
 
-public class MainView extends JPanel {
+public class MainView extends DefaultView {
 
 	/**
 	 * 
@@ -21,7 +22,10 @@ public class MainView extends JPanel {
 		
 		this.setLayout(new GridLayout(1, this.main.size()));
 		
-		this.main.iterator().forEachRemaining(carte -> this.add(carte));
+		this.main.iterator().forEachRemaining(carte -> { this.add(carte); });
+		
+		
+		//this.addMouseListener(this);
 	}
 	/*
 	private void testMainView() {
