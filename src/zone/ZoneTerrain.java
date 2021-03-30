@@ -18,7 +18,7 @@ public abstract class ZoneTerrain extends Zone {
 	}
 
 	
-	public void poserCarte(CartePerso carte) {
+	public void poserCarte(CartePerso carte) throws ZonePleineException {
 		super.poserCarte(carte, 3);
 		
 		//System.out.println("Cartes: " + this.cartes.size());
@@ -32,4 +32,9 @@ public abstract class ZoneTerrain extends Zone {
 		this.interfaceZone = new JPanel();
 		this.interfaceZone.setLayout(new GridLayout(1, 3));
 	}*/
+
+	@Override
+	public boolean zonePleine() {
+		return this.cartes.size() >= 3;
+	}
 }

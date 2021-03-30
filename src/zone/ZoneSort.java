@@ -1,6 +1,5 @@
 package zone;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import carte.Carte;
@@ -13,7 +12,7 @@ public class ZoneSort extends Zone {
 		this.cartes = new ArrayList<>(1);
 	}
 	
-	public void poserCarte(CarteSort carte) {
+	public void poserCarte(CarteSort carte) throws ZonePleineException {
 		super.poserCarte(carte, 1);
 	}
 	
@@ -24,4 +23,9 @@ public class ZoneSort extends Zone {
 	public Carte getCarte2() {
 		return this.cartes.get(1);
 	}*/
+
+	@Override
+	public boolean zonePleine() {
+		return this.cartes.size() >= 1;
+	}
 }

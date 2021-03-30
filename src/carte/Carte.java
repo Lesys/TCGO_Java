@@ -111,7 +111,7 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 			CarteJeu carte = (CarteJeu)e.getSource();
 
 			if (SwingUtilities.isMiddleMouseButton(e)) {
-				WindowPopupCarteView popup = new WindowPopupCarteView(new ImagePanel(this.reference)); // TODO Problème quand on retire une carte puis affiche avec clic droit (??)
+				WindowPopupCarteView popup = new WindowPopupCarteView(new ImagePanel(this.reference));
 				popup.setVisible(true);
 			}
 		}

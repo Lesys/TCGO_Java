@@ -11,6 +11,7 @@ import carte.CartePerso;
 import carte.CarteSort;
 import ensemble.Main;
 import zone.Terrain;
+import zone.ZonePleineException;
 
 public class MainListener implements IEnsembleListener {
 	private Main main;
@@ -49,32 +50,60 @@ public class MainListener implements IEnsembleListener {
 		                int option = optionPane.showYesNoMessage("Choix du terrain", "Sur quel terrain voulez-vous poser la carte?", "Attaque", "Défense");
 		                
 		                if (option == MyOptionPane.YES) { // Attaque
-		                	System.out.println("Je pose en Attaque");
-		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
-		                	
-		                	this.terrain.getZoneAttaque().poserCarte(((CartePerso)carteJeu.get()));
+		                	try {
+		                		if (!this.terrain.getZoneAttaque().zonePleine()) {
+				                	System.out.println("Je pose en Attaque");
+				                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+				                	
+				                	this.terrain.getZoneAttaque().poserCarte(((CartePerso)carteJeu.get()));
+		                		}
+		                	}
+		                	catch (ZonePleineException ex) {
+			                	System.out.println("La zone d'attaque est pleine... impossible d'y poser la carte");
+		                	}
 		                }
 		                else if (option == MyOptionPane.NO) { // Défense
-		                	System.out.println("Je pose en Défense");
-		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
-		                	
-		                	this.terrain.getZoneDefense().poserCarte(((CartePerso)carteJeu.get()));
+		                	try {
+		                		if (!this.terrain.getZoneDefense().zonePleine()) {
+				                	System.out.println("Je pose en Défense");
+				                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+				                	
+				                	this.terrain.getZoneDefense().poserCarte(((CartePerso)carteJeu.get()));
+		                		}
+		                	}
+		                	catch (ZonePleineException ex) {
+			                	System.out.println("La zone de défense est pleine... impossible d'y poser la carte");
+		                	}
 		                }
 					}
 					else if (carte instanceof CarteSort){ // Sort
 		                int option = optionPane.showYesNoMessage("Choix de l'emplacement du sort", "Sur quelle zone sort voulez-vous poser la carte?", "Zone 1", "Zone 2");
 		                
 		                if (option == MyOptionPane.YES) { // Zone 1
-		                	System.out.println("Je pose en Zone 1");
-		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
-		                	
-		                	this.terrain.getZoneSort1().poserCarte(((CarteSort)carteJeu.get()));
+		                	try {
+		                		if (!this.terrain.getZoneSort1().zonePleine()) {
+				                	System.out.println("Je pose en Zone 1");
+				                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+				                	
+				                	this.terrain.getZoneSort1().poserCarte(((CarteSort)carteJeu.get()));
+		                		}
+		                	}
+		                	catch (ZonePleineException ex) {
+			                	System.out.println("La zone de sort 1 est pleine... impossible d'y poser la carte");
+		                	}
 		                }
 		                else if (option == MyOptionPane.NO) { // Zone 2
-		                	System.out.println("Je pose en Zone 2");
-		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
-		                	
-		                	this.terrain.getZoneSort2().poserCarte(((CarteSort)carteJeu.get()));
+		                	try {
+		                		if (!this.terrain.getZoneSort2().zonePleine()) {
+				                	System.out.println("Je pose en Zone 2");
+				                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+				                	
+				                	this.terrain.getZoneSort2().poserCarte(((CarteSort)carteJeu.get()));
+		                		}
+		                	}
+		                	catch (ZonePleineException ex) {
+			                	System.out.println("La zone de sort 2 est pleine... impossible d'y poser la carte");
+		                	}
 		                }
 					}
 				}

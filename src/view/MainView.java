@@ -1,10 +1,6 @@
 package view;
 
-import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JPanel;
 
 import carte.CarteJeu;
 import ensemble.Main;
@@ -43,7 +39,7 @@ public class MainView extends DefaultView implements IEnsembleListener {
 	}*/
 
 	@Override
-	public void onRemove(CarteJeu carteRemoved) {
+	public void onRemove(CarteJeu carteRemoved) { // Des cartes disparaissent lorsqu'on en enlève certaines (et parfois réapparaissent après un refresh...)
 		this.remove(carteRemoved);
 
 		this.refresh();
