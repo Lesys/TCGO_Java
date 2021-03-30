@@ -1,46 +1,29 @@
 package view;
 
-import java.awt.Cursor;
 import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.util.Optional;
 
 import javax.swing.SwingUtilities;
 
 import carte.CarteJeu;
+import carte.CartePerso;
+import carte.CarteSort;
 import ensemble.Main;
+import zone.Terrain;
 
-public class MainListener implements IMainListener {
+public class MainListener implements IEnsembleListener {
 	private Main main;
+	private Terrain terrain;
 	
-	public MainListener(Main main) {
+	
+	private WindowPopupCarteView popup;
+	
+	public MainListener(Main main, Terrain terrain) {
 		this.main = main;
+		this.terrain = terrain;
 		
-		// MouseAdapter permettant de monter la carte si la souris passe dessus (et de la remettre en position si la souris sort) //TODO Afficher les propriétés en haut à gauche (comme YGO)
-		MouseAdapter ma = new MouseAdapter() {
-		     public void mouseEntered(MouseEvent e) {
-		    	 //System.out.println("Dans MouseEntered ma");
-		    	 
-		    	 if (e.getSource() instanceof CarteJeu) {
-					CarteJeu carte = (CarteJeu)e.getSource();
-					Rectangle r = new Rectangle(carte.getX(), carte.getY() - 50, carte.getWidth(), carte.getHeight() + 50);
-					carte.setBounds(r);
-		    	 }
-		     }
-		     
-		     public void mouseExited(MouseEvent e) {
-		    	 //System.out.println("Dans MouseExited ma");
-		    	 
-		    	 if (e.getSource() instanceof CarteJeu) {
-					CarteJeu carte = (CarteJeu)e.getSource();
-					Rectangle r = new Rectangle(carte.getX(), carte.getY() + 50, carte.getWidth(), carte.getHeight() - 50);
-					carte.setBounds(r);
-		    	 }
-		     }
-		};
-		
-		this.main.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); carte.addMouseListener(ma); });
+		this.main.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); });
 		this.main.addListener(this);
 	}
 	
@@ -58,28 +41,66 @@ public class MainListener implements IMainListener {
 		
 			if (e.getSource() instanceof CarteJeu) {
 				CarteJeu carte = (CarteJeu)e.getSource();
+				
 				if (SwingUtilities.isLeftMouseButton(e)) {
+					MyOptionPane optionPane = new MyOptionPane();
+					
+					if (carte instanceof CartePerso) {
+		                int option = optionPane.showYesNoMessage("Choix du terrain", "Sur quel terrain voulez-vous poser la carte?", "Attaque", "Défense");
+		                
+		                if (option == MyOptionPane.YES) { // Attaque
+		                	System.out.println("Je pose en Attaque");
+		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+		                	
+		                	this.terrain.getZoneAttaque().poserCarte(((CartePerso)carteJeu.get()));
+		                }
+		                else if (option == MyOptionPane.NO) { // Défense
+		                	System.out.println("Je pose en Défense");
+		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+		                	
+		                	this.terrain.getZoneDefense().poserCarte(((CartePerso)carteJeu.get()));
+		                }
+					}
+					else if (carte instanceof CarteSort){ // Sort
+		                int option = optionPane.showYesNoMessage("Choix de l'emplacement du sort", "Sur quelle zone sort voulez-vous poser la carte?", "Zone 1", "Zone 2");
+		                
+		                if (option == MyOptionPane.YES) { // Zone 1
+		                	System.out.println("Je pose en Zone 1");
+		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+		                	
+		                	this.terrain.getZoneSort1().poserCarte(((CarteSort)carteJeu.get()));
+		                }
+		                else if (option == MyOptionPane.NO) { // Zone 2
+		                	System.out.println("Je pose en Zone 2");
+		                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+		                	
+		                	this.terrain.getZoneSort2().poserCarte(((CarteSort)carteJeu.get()));
+		                }
+					}
 				}
 				else if (SwingUtilities.isRightMouseButton(e)) {
-					this.main.onRemoveListener(carte);
+                	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+					this.main.onRemoveListener(carteJeu.get());
 				}
-				if (carte.getCursor().getType() == 2)
-					carte.setCursor(new Cursor(5));
-				else
-					carte.setCursor(new Cursor(2));
 			}
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseEntered(MouseEvent e) { 
+		if (e.getSource() instanceof CarteJeu) {
+			CarteJeu carte = (CarteJeu)e.getSource();
+			Rectangle r = new Rectangle(carte.getX(), carte.getY() - 50, carte.getWidth(), carte.getHeight() + 50);
+			carte.setBounds(r);
+		}	
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getSource() instanceof CarteJeu) {
+			CarteJeu carte = (CarteJeu)e.getSource();
+			Rectangle r = new Rectangle(carte.getX(), carte.getY() + 50, carte.getWidth(), carte.getHeight() - 50);
+			carte.setBounds(r);
+		}		
 	}
 
 	@Override

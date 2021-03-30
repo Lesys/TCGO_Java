@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import carte.CarteJeu;
 
 
-public interface IMainListener extends MouseListener{
+public interface IEnsembleListener extends MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e);
 

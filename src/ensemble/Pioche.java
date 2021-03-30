@@ -106,7 +106,7 @@ public class Pioche extends EnsembleCarte {
 
 		//for (int i = 0; i < 2; i++)
 		//	pioche.ajouterCarte(new CartePerso(CartePerso.creationCarteTest().getReference(), "Nom nouveau", "Animé nouveau", null, 3, 6, 6, 6));
-		for (int i = 0; i < 30; i++)
+		for (int i = 0; i < 40; i++)
 			pioche.ajouterCarte(CartePerso.creationCarteTest());
 		//pioche.ajouterCarte(new CartePerso(CartePerso.creationCarteTest().getReference(), "Nom nouveau", "Animé nouveau", null, 3, 6, 6, 6));
 		

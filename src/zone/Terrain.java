@@ -52,9 +52,13 @@ public class Terrain {
 		return this.zoneSort2;
 	}
 	
-	public static void initTest() {
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public static Terrain initTest() {
 		Terrain terrain = new Terrain("Terrain de test");
-		
+		/*
 		CartePerso carteTest = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
 		CartePerso carteTest2 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png", "nom", "anime", null, 1, 5, 2, 3);
 		CartePerso carteTest3 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
@@ -62,10 +66,11 @@ public class Terrain {
 		CartePerso carteTest5 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png", "nom", "anime", null, 1, 5, 2, 3);
 		CartePerso carteTest6 = new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
 		CarteSort carteSort = new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 3);
+		CarteSort carteSort2 = new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 3);
 
 		terrain.zoneSort1.poserCarte(carteSort);
 		
-		terrain.zoneSort2.poserCarte(carteSort);
+		terrain.zoneSort2.poserCarte(carteSort2);
 		
 		//carteTest.repaint();
 		
@@ -76,6 +81,8 @@ public class Terrain {
 		
 		terrain.zoneAttaque.poserCarte(carteTest4);
 		terrain.zoneAttaque.poserCarte(carteTest5);
-		terrain.zoneAttaque.poserCarte(carteTest6);
+		terrain.zoneAttaque.poserCarte(carteTest6);*/
+		
+		return terrain;
 	}
 }

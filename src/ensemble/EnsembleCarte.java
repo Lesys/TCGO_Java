@@ -8,13 +8,13 @@ import java.util.Optional;
 import java.util.Random;
 
 import carte.CarteJeu;
-import view.IMainListener;
+import view.IEnsembleListener;
 import view.MainListener;
 
 
 public abstract class EnsembleCarte {	
 	protected LinkedList<CarteJeu> cartes;
-	protected List<IMainListener> listeners;
+	protected List<IEnsembleListener> listeners;
 	protected String nom;
 	
 	public EnsembleCarte(String nom) {
@@ -79,6 +79,20 @@ public abstract class EnsembleCarte {
 		
 		return op;
 	}
+
+	public Optional<CarteJeu> recupererCarte(CarteJeu carteJeu) throws NoSuchElementException {
+		Optional<CarteJeu> op = this.cartes.stream().filter(c -> c.equals(carteJeu))
+			.findFirst();
+		if (this.cartes.remove(op.get())) {
+			this.onRemoveListener(op.get());
+			//System.out.println("Il reste " + this.count(carteJeu) + " exemplaires de cette carte dans " + this.nom);
+			this.melanger();
+		}
+		else // Normalement impossible puisqu'on prend la carte depuis l'ensemble
+			System.err.println("L'ensemble " + this.nom + " ne contient pas de carte " + op.get().getReference());
+		
+		return op;
+	}
 	
 	/** Permet de compter combien d'exemplaires de cette carte sont présents dans cet ensemble 
 	 * 
@@ -117,11 +131,11 @@ public abstract class EnsembleCarte {
 	
 	public abstract void reinitialisation();
 	
-	public void addListener(IMainListener l) {
+	public void addListener(IEnsembleListener l) {
 		this.listeners.add(l);
 	}
 
-	public void removeListener(IMainListener l) {
+	public void removeListener(IEnsembleListener l) {
 		this.listeners.remove(l);
 	}
 

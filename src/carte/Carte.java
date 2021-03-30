@@ -1,12 +1,12 @@
 package carte;
-import java.awt.ComponentOrientation;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.border.Border;
+import javax.swing.SwingUtilities;
 
 import effet.StrategieEffet;
 import images.ImagePanel;
+import view.WindowPopupCarteView;
 
 
 public abstract class Carte extends ImagePanel implements Cloneable, MouseListener {
@@ -38,6 +38,8 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		this.anime = anime;
 		this.effet = effet;
 		this.nbExemplaire = nbExemplaire;
+		
+		this.addMouseListener(this);
 	}
 	
 	/**
@@ -87,7 +89,11 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		
 		if (o instanceof Carte) {
 			Carte c = (Carte)o;
-			retour = this.reference.equals(c.reference);
+			retour = this.reference.equals(c.reference) &&
+					this.nom.equals(c.nom) &&
+					this.anime.equals(c.anime) &&
+					((this.effet == null && c.effet == null) || (this.effet != null && c.effet != null && this.effet.equals(c.effet))) &&
+					this.nbExemplaire == c.nbExemplaire;
 		}
 		
 		return retour;
@@ -101,7 +107,14 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		if (e.getSource() instanceof CarteJeu) {
+			CarteJeu carte = (CarteJeu)e.getSource();
+
+			if (SwingUtilities.isMiddleMouseButton(e)) {
+				WindowPopupCarteView popup = new WindowPopupCarteView(new ImagePanel(this.reference)); // TODO Problème quand on retire une carte puis affiche avec clic droit (??)
+				popup.setVisible(true);
+			}
+		}
 	}
 
 	@Override

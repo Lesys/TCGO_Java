@@ -16,6 +16,8 @@ public class CarteHerosView extends DefaultView {
 	
 	public CarteHerosView(CarteHeros carteHeros) {
 		this.carteHeros = carteHeros;
+		
+		this.strategieView = StrategieViewAfficherProprieteCarte.getInstance();
 
 		this.setLayout(new BorderLayout());
 		//this.add(new TextField("Carte héros"));
@@ -30,6 +32,6 @@ public class CarteHerosView extends DefaultView {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		StrategieViewAfficherProprieteCarte.getInstance().executer(this);
+		this.strategieView.executer(this);
 	}
 }

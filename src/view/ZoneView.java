@@ -1,10 +1,8 @@
 package view;
 
-import javax.swing.JPanel;
-
 import zone.Zone;
 
-public class ZoneView extends JPanel {
+public class ZoneView extends DefaultView {
 	/**
 	 * 
 	 */

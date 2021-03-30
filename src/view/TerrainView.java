@@ -46,4 +46,23 @@ public class TerrainView extends JPanel{
 			this.add(this.zoneAttaque);
 		}
 	}
+	
+	public ZoneTerrainView getZoneAttaque() {
+		return this.zoneAttaque;
+	}
+
+	
+	public ZoneTerrainView getZoneDefense() {
+		return this.zoneDefense;
+	}
+
+	
+	public ZoneSortView getZoneSort1() {
+		return this.zoneSort1;
+	}
+
+	
+	public ZoneSortView getZoneSort2() {
+		return this.zoneSort2;
+	}
 }

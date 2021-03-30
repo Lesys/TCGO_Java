@@ -189,6 +189,7 @@ public class Joueur {
 		joueur.defausse = Defausse.initTest();
 		joueur.zoneBannie = ZoneBannie.initTest();
 		joueur.heros = CarteHeros.initTest();
+		joueur.terrain = Terrain.initTest();
 		
 		for (int i = 0; i < Main.debutMain; i++)
 			joueur.main.ajouterCarte(joueur.pioche.piocher());

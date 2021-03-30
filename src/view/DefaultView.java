@@ -42,4 +42,9 @@ public class DefaultView extends JPanel implements MouseListener {
 		
 	}
 
+	public void refresh() {
+		this.revalidate();
+		this.repaint();
+	}
+
 }

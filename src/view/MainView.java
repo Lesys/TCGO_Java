@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import carte.CarteJeu;
 import ensemble.Main;
 
-public class MainView extends DefaultView implements IMainListener {
+public class MainView extends DefaultView implements IEnsembleListener {
 
 	/**
 	 * 
@@ -41,21 +41,18 @@ public class MainView extends DefaultView implements IMainListener {
 		this.main.ajouterCarte(CartePerso.creationCarteTest());
 		this.main.ajouterCarte(CartePerso.creationCarteTest());
 	}*/
-	
+
+	@Override
 	public void onRemove(CarteJeu carteRemoved) {
 		this.remove(carteRemoved);
 
 		this.refresh();
 	}
 
+	@Override
 	public void onAdd(CarteJeu carteAdded) {
 		this.add(carteAdded);
 		
 		this.refresh();
-	}
-	
-	public void refresh() {
-		this.revalidate();
-		this.repaint();
 	}
 }

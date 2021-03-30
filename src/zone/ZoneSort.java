@@ -1,5 +1,6 @@
 package zone;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import carte.Carte;

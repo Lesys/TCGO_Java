@@ -64,7 +64,7 @@ public abstract class CarteJeu extends Carte {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("Carte: " + e.getSource());
-		
+		super.mouseClicked(e);
+		System.out.println("Dans CarteJeu: " + e.getSource());
 	}
 }

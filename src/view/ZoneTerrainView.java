@@ -2,9 +2,10 @@ package view;
 
 import java.awt.GridLayout;
 
+import carte.CarteJeu;
 import zone.ZoneTerrain;
 
-public class ZoneTerrainView extends ZoneView {
+public class ZoneTerrainView extends ZoneView implements IEnsembleListener  {
 	/**
 	 * 
 	 */
@@ -16,5 +17,23 @@ public class ZoneTerrainView extends ZoneView {
 		this.setLayout(new GridLayout(1, 3));
 		
 		this.zone.iterator().forEachRemaining(carte -> this.add(carte));
+		
+		this.zone.addListener(this);
 	}
+
+	@Override
+	public void onRemove(CarteJeu carteRemoved) {
+		this.remove(carteRemoved);
+
+		this.refresh();
+	}
+
+	@Override
+	public void onAdd(CarteJeu carteAdded) {
+		this.add(carteAdded);
+		
+		this.refresh();
+	}
+	
+	//TODO Ajouter comme les autres view pour rafraîchir + un listener
 }
