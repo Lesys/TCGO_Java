@@ -3,17 +3,18 @@ package zone;
 import java.util.ArrayList;
 
 import carte.Carte;
+import carte.CarteJeu;
 import carte.CarteSort;
 import zone.etatZone.EtatZoneSort;
 
 public class ZoneSort extends Zone {
 	public ZoneSort() {
-		super(EtatZoneSort.getInstance());
+		super(new EtatZoneSort(null));
 		this.cartes = new ArrayList<>(1);
 	}
 	
 	public void poserCarte(CarteSort carte) throws ZonePleineException {
-		super.poserCarte(carte, 1);
+		this.poserCarte(carte);
 	}
 	
 	public Carte getCarte() {
@@ -27,5 +28,11 @@ public class ZoneSort extends Zone {
 	@Override
 	public boolean zonePleine() {
 		return this.cartes.size() >= 1;
+	}
+
+	@Override
+	public void poserCarte(CarteJeu carte) throws ZonePleineException {
+		super.poserCarte(carte, 1);
+		
 	}
 }

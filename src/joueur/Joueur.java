@@ -8,8 +8,11 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import carte.CarteHeros;
 import carte.CarteJeu;
+import carte.CartePerso;
 import carte.CarteSort;
 import zone.Terrain;
+import zone.Zone;
+import zone.ZonePleineException;
 import ensemble.Defausse;
 import ensemble.Main;
 import ensemble.Pioche;
@@ -18,6 +21,8 @@ import ensemble.ZoneBannie;
 
 public class Joueur {
 	public static int energieBase = 5;
+	
+	private Joueur adversaire;
 	
 	private String nom;
 	private TypeJoueur type;
@@ -101,7 +106,7 @@ public class Joueur {
 		this.terrain = new Terrain("Terrain de " + this.nom);
 		
 		this.reinitialisationNouvellePartie();
-		//this.refil();
+		this.refil();
 	}
 
 	
@@ -128,16 +133,31 @@ public class Joueur {
 	public CarteHeros getHeros() {
 		return this.heros;
 	}
+	
+	public Joueur getAdversaire() {
+		return this.adversaire;
+	}
+	
+	public void setJoueurAdverse(Joueur adversaire) {
+		this.adversaire = adversaire;
+	}
 
 
-	public void jouerCarte(CarteJeu carte) {
+	public void jouerCarte(CarteJeu carte, Zone zone) {
 		try {
 			if (this.energie < carte.getCout())
 				throw new NotEnoughtEnergieException(this.energie, carte.getCout());
 			
 			// Poser carte sur une case du terrain
+        	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
+        	
+        	zone.poserCarte(carteJeu.get());
+        	
+        	this.energie -= carte.getCout();
 		} catch (NotEnoughtEnergieException e) {
 			System.out.println(e.getMessage());
+		} catch (ZonePleineException e) {
+			System.out.println("Zone pleine dans le joueur");
 		}
 	}
 	
@@ -165,8 +185,8 @@ public class Joueur {
 	 */
 	public void refil() {
 		// Augmente l'énergie max si la carte héros est suffisamment endommagé
-		if (this.heros.getNbEnergie() > (this.energieMax - Joueur.energieBase))
-			this.energieMax += this.heros.getNbEnergie();
+		/*if (this.heros.getNbEnergie() > (this.energieMax - Joueur.energieBase))
+			this.energieMax += this.heros.getNbEnergie();*/
 		
 		this.energie = this.energieMax + this.energieSupp;
 		this.terrain.reinitialiser();

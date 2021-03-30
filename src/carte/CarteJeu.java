@@ -1,5 +1,5 @@
 package carte;
-import zone.ZoneTerrain;
+import zone.etatZone.EtatZone;
 
 import java.awt.event.MouseEvent;
 
@@ -7,10 +7,15 @@ import effet.StrategieEffet;
 
 
 public abstract class CarteJeu extends Carte {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1240026014212003112L;
+	
 	protected int cout;
 	protected int coutInit;
 	
-	protected ZoneTerrain zone;
+	protected EtatZone etatZone;
 
 	/** Constructeur par défaut initialisant les paramètres basiques d'une carte 
 	 * 
@@ -37,16 +42,17 @@ public abstract class CarteJeu extends Carte {
 	 * 
 	 * @return	L'état de la zone
 	 */
-	public ZoneTerrain getZone() {
-		return this.zone;
+	public EtatZone getEtatZone() {
+		return this.etatZone;
 	}
 
 	/** Accesseur (setter) sur la zone
 	 * 
 	 * @param zone		La nouvelle zone
 	 */
-	public void setZone(ZoneTerrain zone) {
-		this.zone = zone;
+	public void setEtatZone(EtatZone etatZone) {
+		this.etatZone = etatZone;
+		this.etatZone.setCarte(this);
 	}
 	
 	@Override

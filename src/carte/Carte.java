@@ -98,12 +98,20 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		
 		return retour;
 	}
+	
+	public abstract void lancerAttaque(Carte carte);
+	
+	public abstract void subirAttaque(Carte carte);
 
 	/** Permet de convertir la carte en chaîne de caractères qui sera sauvegardée dans un fichier texte
 	 * 
 	 * @return		La chaîne de caractères représentant la carte
 	 */
 	public abstract String toStringSave();
+	
+	public String infosToString() {
+		return this.getClass() + " ==> Nom: " + this.nom;
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {

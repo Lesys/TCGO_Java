@@ -4,17 +4,20 @@ import java.awt.event.MouseEvent;
 
 import carte.CarteJeu;
 import ensemble.Main;
+import joueur.Joueur;
 import zone.Zone;
 
 public class ZoneListener implements IEnsembleListener {
 	protected Main main;
 	protected Zone zone;
+	protected Joueur joueur;
 	
 	protected WindowPopupCarteView popup;
 	
-	public ZoneListener(Main main, Zone zone) {
+	public ZoneListener(Main main, Zone zone, Joueur joueur) {
 		this.main = main;
 		this.zone = zone;
+		this.joueur = joueur;
 
 		this.zone.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); });
 		this.zone.addListener(this);

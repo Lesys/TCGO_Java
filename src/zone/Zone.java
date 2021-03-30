@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 import java.util.*;
 
 import carte.CarteJeu;
-import ensemble.ExemplaireMaximumException;
 import view.IEnsembleListener;
 import zone.etatZone.EtatZone;
 
@@ -20,10 +19,20 @@ public abstract class Zone implements Iterable<CarteJeu>, MouseListener {
 		this.listeners = new ArrayList<>();
 	}
 	
+	public abstract void poserCarte(CarteJeu carte) throws ZonePleineException;
+	
 	protected void poserCarte(CarteJeu carte, int max) throws ZonePleineException {
 		if (this.cartes.size() < max) { // TODO Choisir l'emplacement dans ceux libres
+			System.out.println("Pose de la carte en zone" + this.getClass());
+			EtatZone etatCarte = this.etatZone.getConstructor(carte);
+			carte.setEtatZone(etatCarte);
+			System.out.println("EtatZone de la carte posée: " + carte.getEtatZone());
+			
 			this.cartes.add(carte);
 			this.onAddListener(carte);
+			
+			
+			// TODO Mettre la bonne zoneEtat à la carte (faire dans chaque classe?)
 		}
 		else {
 			System.out.println("La capacité maximale a été atteinte pour la zone");

@@ -1,6 +1,7 @@
 package zone;
 
 import carte.Carte;
+import carte.CarteJeu;
 import carte.CartePerso;
 import zone.etatZone.EtatZone;
 
@@ -19,13 +20,13 @@ public abstract class ZoneTerrain extends Zone {
 
 	
 	public void poserCarte(CartePerso carte) throws ZonePleineException {
-		super.poserCarte(carte, 3);
-		
+		this.poserCarte(carte);
+	
 		//System.out.println("Cartes: " + this.cartes.size());
 	}
 	
 	public void changerEtatZone() {
-		this.etatZone = this.etatZone.changerEtatZone();
+		//this.etatZone = this.etatZone.changerEtatZone();
 	}
 	/*
 	private void initInterfaceZone() {
@@ -36,5 +37,11 @@ public abstract class ZoneTerrain extends Zone {
 	@Override
 	public boolean zonePleine() {
 		return this.cartes.size() >= 3;
+	}
+
+	@Override
+	public void poserCarte(CarteJeu carte) throws ZonePleineException {
+		super.poserCarte(carte, 3);
+		
 	}
 }

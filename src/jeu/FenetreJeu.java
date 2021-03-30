@@ -81,6 +81,9 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		this.joueurView2 = new JoueurView(2);
 		center.add(this.joueurView1);
 		center.add(this.joueurView2);
+
+		this.joueurView1.getJoueur().setJoueurAdverse(this.joueurView2.getJoueur());
+		this.joueurView2.getJoueur().setJoueurAdverse(this.joueurView1.getJoueur());
 		
 		// Tests
 		// Les TextFields sont dans le bon sens (chaque joueur a sa partie 2 en dessous de la partie 1)

@@ -7,7 +7,7 @@ import zone.etatZone.EtatZoneDefense;
 
 public class ZoneTerrainDefense extends ZoneTerrain {
 	public ZoneTerrainDefense() {
-		super(EtatZoneDefense.getInstance());
+		super(new EtatZoneDefense(null));
 		this.cartes = new ArrayList<>(3);
 	}
 

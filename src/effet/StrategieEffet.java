@@ -1,5 +1,6 @@
 package effet;
 import zone.ZoneTerrainAttaque;
+import zone.etatZone.EtatZoneAttaque;
 import carte.Carte;
 import carte.CarteJeu;
 import carte.CartePerso;
@@ -65,7 +66,7 @@ public abstract class StrategieEffet {
 		boolean attaque = false;
 		// Normalement, ne peut attaquer que si en zone d'attaque
 		if (this.carte instanceof CarteJeu)
-			attaque = ((CarteJeu)this.carte).getZone() instanceof ZoneTerrainAttaque;
+			attaque = ((CarteJeu)this.carte).getEtatZone() instanceof EtatZoneAttaque;
 		
 		return attaque;
 	}

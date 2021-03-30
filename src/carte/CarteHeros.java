@@ -43,6 +43,11 @@ public class CarteHeros extends Carte {
 		//super.reinitialisation();
 		this.pv = this.pvMax;
 	}
+
+	@Override
+	public String infosToString() {
+		return super.infosToString() + "\nHP: " + this.pv + "/" + this.pvMax;
+	}
 	
 	@Override
 	public String toString() {
@@ -58,5 +63,18 @@ public class CarteHeros extends Carte {
 	public static CarteHeros initTest() {
 		return new CarteHeros("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "Héros de test", "anime", null, 4);
 		
+	}
+
+	@Override
+	public void lancerAttaque(Carte carte) {
+		// Un héros ne peut (normalement) pas attaquer
+	}
+
+	@Override
+	public void subirAttaque(Carte carte) {
+		if (carte instanceof CartePerso) {
+			CartePerso cartePerso = (CartePerso) carte;
+			this.pv -= (cartePerso.getAttaque() > 0 ? cartePerso.getAttaque() : 0);
+		}
 	}
 }

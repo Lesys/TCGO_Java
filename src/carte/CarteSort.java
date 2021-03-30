@@ -24,6 +24,7 @@ public class CarteSort extends CarteJeu {
 	
 	@Override
 	public void combattre(Carte c) {
+		// Une carte sort ne combat pas (normalement)
 	}
 
 	@Override
@@ -35,5 +36,17 @@ public class CarteSort extends CarteJeu {
 	public String toStringSave() {
 		return this.reference + ";" + this.nbExemplaire + ";Sort;" + this.nom + ";" + this.anime
 			+ ";" + "X;X;" + this.cout + ";" + this.effet;
+	}
+
+	@Override
+	public void lancerAttaque(Carte carte) {
+		// Rien
+		
+	}
+
+	@Override
+	public void subirAttaque(Carte carte) {
+		// Rien
+		
 	}
 }

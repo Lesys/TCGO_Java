@@ -3,11 +3,12 @@ package zone;
 import java.util.ArrayList;
 
 import carte.Carte;
+import carte.CarteJeu;
 import zone.etatZone.EtatZoneAttaque;
 
 public class ZoneTerrainAttaque extends ZoneTerrain {
 	public ZoneTerrainAttaque() {
-		super(EtatZoneAttaque.getInstance());
+		super(new EtatZoneAttaque(null));
 		this.cartes = new ArrayList<>(3);
 	}
 	

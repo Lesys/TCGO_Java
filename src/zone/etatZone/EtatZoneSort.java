@@ -2,30 +2,42 @@ package zone.etatZone;
 
 import carte.Carte;
 
-public class EtatZoneSort implements EtatZone {
-	private Carte carte;
+public class EtatZoneSort extends EtatZone {
+	//private static EtatZoneSort instance = null;
 	
-	private static EtatZoneSort instance = null;
-	
-	private EtatZoneSort() {
-		
+	public EtatZoneSort(Carte carte) {
+		super(carte);
 	}
 	
-	public static EtatZoneSort getInstance() {
+	/*public static EtatZoneSort getInstance() {
 		if (EtatZoneSort.instance == null)
 			EtatZoneSort.instance = new EtatZoneSort();
 		
 		return EtatZoneSort.instance;
-	}
+	}*/
 	
 	@Override
 	public void combattre(Carte cible) {
-		// Ne fait rien car en défense, ne peut normalement pas attaquer
+		// Ne fait rien car carte sort (normalement)
+	}
+
+	@Override
+	public void repliquer(Carte cible) {
+		// Ne fait rien car carte sort (normalement)
 	}
 	
-	@Override
+	public void setCarte(Carte carte) {
+		this.carte = carte;
+	}
+	
+	/*@Override
 	public EtatZone changerEtatZone() {
 		// Ne change pas l'état zone
 		return EtatZoneSort.getInstance();
+	}*/
+
+	@Override
+	public EtatZone getConstructor(Carte carte) {
+		return new EtatZoneSort(carte);
 	}
 }

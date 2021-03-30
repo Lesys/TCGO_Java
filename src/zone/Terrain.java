@@ -6,8 +6,8 @@ import carte.CarteSort;
 
 public class Terrain {
 	private String nom;
-	private ZoneTerrain zoneAttaque;
-	private ZoneTerrain zoneDefense;
+	private ZoneTerrainAttaque zoneAttaque;
+	private ZoneTerrainDefense zoneDefense;
 	private ZoneSort zoneSort1;
 	private ZoneSort zoneSort2;
 	
@@ -36,11 +36,11 @@ public class Terrain {
 			c.getEffet().effetDebutTour();
 	}
 	
-	public ZoneTerrain getZoneAttaque() {
+	public ZoneTerrainAttaque getZoneAttaque() {
 		return this.zoneAttaque;
 	}	
 
-	public ZoneTerrain getZoneDefense() {
+	public ZoneTerrainDefense getZoneDefense() {
 		return this.zoneDefense;
 	}
 

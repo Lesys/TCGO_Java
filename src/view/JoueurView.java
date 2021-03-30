@@ -157,20 +157,20 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		
 		// Gestion des events (Listeners)
 		// Terrain
-		this.zoneTerrainAttaqueListener = new ZoneTerrainAttaqueListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneAttaque());
+		this.zoneTerrainAttaqueListener = new ZoneTerrainAttaqueListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneAttaque(), this.joueur);
 		this.terrainView.getZoneAttaque().addMouseListener(this.zoneTerrainAttaqueListener);
 
-		this.zoneTerrainDefenseListener = new ZoneTerrainDefenseListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneDefense());
+		this.zoneTerrainDefenseListener = new ZoneTerrainDefenseListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneDefense(), this.joueur);
 		this.terrainView.getZoneDefense().addMouseListener(this.zoneTerrainDefenseListener);
 
-		this.zoneSort1Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort1());
+		this.zoneSort1Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort1(), this.joueur);
 		this.terrainView.getZoneSort1().addMouseListener(this.zoneSort1Listener);
 
-		this.zoneSort2Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort2());
+		this.zoneSort2Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort2(), this.joueur);
 		this.terrainView.getZoneSort2().addMouseListener(this.zoneSort2Listener);
 
 		// Main
-		this.mainListener = new MainListener(this.joueur.getMain(), this.joueur.getTerrain());
+		this.mainListener = new MainListener(this.joueur.getMain(), this.joueur.getTerrain(), this.joueur);
 		this.mainView.addMouseListener(this.mainListener);
 		
 		// Pioche
@@ -184,6 +184,10 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		// ZoneBannie
 		this.zoneBannieListener = new ZoneBannieListener(this.joueur.getZoneBannie());
 		this.zoneBannieView.addMouseListener(this.zoneBannieListener);
+	}
+	
+	public Joueur getJoueur() {
+		return this.joueur;
 	}
 
 	/** Accesseur (getter) sur le jeu de la vie

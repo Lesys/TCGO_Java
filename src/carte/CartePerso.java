@@ -76,7 +76,11 @@ public class CartePerso extends CarteJeu {
 
 	@Override
 	public void combattre(Carte c) {
-		this.zone.combattre(c);
+		this.etatZone.combattre(c);
+	}
+	
+	public String infosToString() {
+		return super.infosToString() + "; HP: " + this.pv + "/" + this.pvMax + "; Atk: " + this.attaque + "/" + this.attaqueInit + "; Coût: " + this.cout + "/" + this.coutInit;
 	}
 	
 	@Override
@@ -92,5 +96,20 @@ public class CartePerso extends CarteJeu {
 	
 	public static CarteJeu creationCarteTest() {
 		return new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
+	}
+
+	@Override
+	public void lancerAttaque(Carte carte) {
+		System.out.println(this.nom + " lance une attaque sur " + carte.getNom());
+		// Appliquer les effets ici
+		carte.subirAttaque(this);
+	}
+
+	@Override
+	public void subirAttaque(Carte carte) {
+		if (carte instanceof CartePerso) {
+			CartePerso cartePerso = (CartePerso) carte;
+			this.pv -= (cartePerso.getAttaque() > 0 ? cartePerso.getAttaque() : 0);
+		}
 	}
 }
