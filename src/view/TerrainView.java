@@ -30,20 +30,20 @@ public class TerrainView extends JPanel{
 			// ZONE DEFENSE - ZONE SORT 2
 			// ZONE ATTAQUE - ZONE SORT 1
 			//this.setLayout(new BorderLayout());
-			
+
+			this.add(this.zoneSort1);
 			this.add(this.zoneAttaque);
 			this.add(this.zoneSort2);
 			this.add(this.zoneDefense);
-			this.add(this.zoneSort1);
 		}
 		else {
 			// ZONE SORT 1 - ZONE ATTAQUE
 			// ZONE SORT 2 - ZONE DEFENSE
 			
-			this.add(this.zoneSort1);
-			this.add(this.zoneDefense);			
-			this.add(this.zoneSort2);
+			this.add(this.zoneDefense);		
+			this.add(this.zoneSort2);	
 			this.add(this.zoneAttaque);
+			this.add(this.zoneSort1);
 		}
 	}
 	

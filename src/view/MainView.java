@@ -20,7 +20,7 @@ public class MainView extends DefaultView implements IEnsembleListener {
 		
 		this.setLayout(new GridLayout(1, this.main.size()));
 		
-		this.main.iterator().forEachRemaining(carte -> { this.add(carte); });
+		this.main.iterator().forEachRemaining(carte -> { this.add(carte); }); // Ajoute toutes les cartes actuelles dans la View
 		this.main.addListener(this);
 		
 		
@@ -48,7 +48,7 @@ public class MainView extends DefaultView implements IEnsembleListener {
 	@Override
 	public void onAdd(CarteJeu carteAdded) {
 		this.add(carteAdded);
-		
+
 		this.refresh();
 	}
 }

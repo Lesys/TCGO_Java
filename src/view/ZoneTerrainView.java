@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import carte.CarteJeu;
 import zone.ZoneTerrain;
 
-public class ZoneTerrainView extends ZoneView implements IEnsembleListener  {
+public class ZoneTerrainView extends ZoneView implements IEnsembleListener {
 	/**
 	 * 
 	 */
@@ -21,17 +21,22 @@ public class ZoneTerrainView extends ZoneView implements IEnsembleListener  {
 		this.zone.addListener(this);
 	}
 
+
 	@Override
 	public void onRemove(CarteJeu carteRemoved) {
 		this.remove(carteRemoved);
 
+		System.out.println("On remove ZoneTerrainView");
+		
 		this.refresh();
 	}
 
 	@Override
 	public void onAdd(CarteJeu carteAdded) {
 		this.add(carteAdded);
-		
+
+		System.out.println("On add ZoneTerrainView");
+
 		this.refresh();
 	}
 	

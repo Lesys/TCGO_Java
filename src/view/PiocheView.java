@@ -2,7 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.TextField;
-import java.awt.event.MouseEvent;
 
 import ensemble.Pioche;
 import images.ImagePanel;

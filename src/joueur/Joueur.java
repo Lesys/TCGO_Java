@@ -8,6 +8,7 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import carte.CarteHeros;
 import carte.CarteJeu;
+import carte.CarteSort;
 import zone.Terrain;
 import ensemble.Defausse;
 import ensemble.Main;
@@ -193,7 +194,10 @@ public class Joueur {
 		
 		for (int i = 0; i < Main.debutMain; i++)
 			joueur.main.ajouterCarte(joueur.pioche.piocher());
+		joueur.main.ajouterCarte(new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "Carte sort", "Animé de sort", null, 1, 4));
 		
+		joueur.main.ajouterCarte(new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png", "Carte sort", "Animé de sort", null, 1, 4));
+
 		//System.out.println(joueur.heros.toString());
 		//joueur.main.iterator().forEachRemaining(c -> System.out.println(c.getReference()));
 		

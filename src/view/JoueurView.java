@@ -32,8 +32,10 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 	private CarteHerosView carteHerosView;
 	
 	// Listeners
-	private ZoneTerrainListener zoneTerrainAttaqueListener;
-	private ZoneTerrainListener zoneTerrainDefenseListener;
+	private ZoneListener zoneTerrainAttaqueListener;
+	private ZoneListener zoneTerrainDefenseListener;
+	private ZoneSortListener zoneSort1Listener;
+	private ZoneSortListener zoneSort2Listener;
 	private MainListener mainListener;
 	private PiocheListener piocheListener;
 	private DefausseListener defausseListener;
@@ -154,28 +156,32 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		}
 		
 		// Gestion des events (Listeners)
-		this.zoneTerrainAttaqueListener = new ZoneTerrainAttaqueListener(this.joueur.getMain(), this.joueur.getTerrain());
+		// Terrain
+		this.zoneTerrainAttaqueListener = new ZoneTerrainAttaqueListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneAttaque());
 		this.terrainView.getZoneAttaque().addMouseListener(this.zoneTerrainAttaqueListener);
 
-		this.zoneTerrainDefenseListener = new ZoneTerrainDefenseListener(this.joueur.getMain(), this.joueur.getTerrain());
+		this.zoneTerrainDefenseListener = new ZoneTerrainDefenseListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneDefense());
 		this.terrainView.getZoneDefense().addMouseListener(this.zoneTerrainDefenseListener);
 
-		/*this.zoneSort1Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain());
+		this.zoneSort1Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort1());
 		this.terrainView.getZoneSort1().addMouseListener(this.zoneSort1Listener);
 
-		this.zoneSort2Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain());
-		this.terrainView.getZoneSort2().addMouseListener(this.zoneSort2Listener);*/
+		this.zoneSort2Listener = new ZoneSortListener(this.joueur.getMain(), this.joueur.getTerrain().getZoneSort2());
+		this.terrainView.getZoneSort2().addMouseListener(this.zoneSort2Listener);
 
-		
+		// Main
 		this.mainListener = new MainListener(this.joueur.getMain(), this.joueur.getTerrain());
 		this.mainView.addMouseListener(this.mainListener);
 		
+		// Pioche
 		this.piocheListener = new PiocheListener(this.joueur.getPioche(), this.joueur.getMain());
 		this.piocheView.addMouseListener(this.piocheListener);
 
+		// Defausse
 		this.defausseListener = new DefausseListener(this.joueur.getDefausse());
 		this.defausseView.addMouseListener(this.defausseListener);
 
+		// ZoneBannie
 		this.zoneBannieListener = new ZoneBannieListener(this.joueur.getZoneBannie());
 		this.zoneBannieView.addMouseListener(this.zoneBannieListener);
 	}

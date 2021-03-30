@@ -3,8 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.TextField;
 
-import javax.swing.JPanel;
-
 import ensemble.Defausse;
 import images.ImagePanel;
 

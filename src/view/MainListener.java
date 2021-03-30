@@ -17,21 +17,20 @@ public class MainListener implements IEnsembleListener {
 	private Main main;
 	private Terrain terrain;
 	
-	
-	private WindowPopupCarteView popup;
-	
 	public MainListener(Main main, Terrain terrain) {
 		this.main = main;
 		this.terrain = terrain;
 		
-		this.main.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); });
+		this.main.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); }); // Écoute chaque carte
 		this.main.addListener(this);
 	}
 	
+	@Override
 	public void onRemove(CarteJeu carteRemoved) {
 		carteRemoved.removeMouseListener(this);
 	}
 
+	@Override
 	public void onAdd(CarteJeu carteAdded) {
 		carteAdded.addMouseListener(this);
 	}
@@ -46,6 +45,7 @@ public class MainListener implements IEnsembleListener {
 				if (SwingUtilities.isLeftMouseButton(e)) {
 					MyOptionPane optionPane = new MyOptionPane();
 					
+					// Si la carte à poser est un personnage, affiche une fenêtre correspondante
 					if (carte instanceof CartePerso) {
 		                int option = optionPane.showYesNoMessage("Choix du terrain", "Sur quel terrain voulez-vous poser la carte?", "Attaque", "Défense");
 		                
@@ -76,6 +76,7 @@ public class MainListener implements IEnsembleListener {
 		                	}
 		                }
 					}
+					// Si la carte à poser est un sort, affiche une fenêtre correspondante
 					else if (carte instanceof CarteSort){ // Sort
 		                int option = optionPane.showYesNoMessage("Choix de l'emplacement du sort", "Sur quelle zone sort voulez-vous poser la carte?", "Zone 1", "Zone 2");
 		                

@@ -1,13 +1,12 @@
 package view;
 
 import ensemble.Main;
-import zone.Terrain;
+import zone.ZoneTerrain;
 
-public class ZoneTerrainDefenseListener extends ZoneTerrainListener {
-	public ZoneTerrainDefenseListener(Main main, Terrain terrain) {
-		super(main, terrain);
+public class ZoneTerrainDefenseListener extends ZoneListener {
 
-		this.terrain.getZoneDefense().iterator().forEachRemaining(carte -> {carte.addMouseListener(this); });
-		this.terrain.getZoneDefense().addListener(this);
+	public ZoneTerrainDefenseListener(Main main, ZoneTerrain zoneTerrain) {
+		super(main, zoneTerrain);
+		// TODO Auto-generated constructor stub
 	}
 }
