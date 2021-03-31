@@ -49,4 +49,11 @@ public class CarteSort extends CarteJeu {
 		// Rien
 		
 	}
+
+	@Override
+	public Carte getCopy() {
+		CarteSort carte = new CarteSort(this.reference, this.nom, this.anime, this.effet, this.nbExemplaire, this.cout);
+	
+		return carte;
+	}
 }

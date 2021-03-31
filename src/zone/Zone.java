@@ -46,6 +46,10 @@ public abstract class Zone implements Iterable<CarteJeu>, MouseListener {
 	}
 
 	public abstract boolean zonePleine();
+
+	public boolean zoneVide() {
+		return this.cartes.isEmpty();
+	}
 	
 	public void addListener(IEnsembleListener l) {
 		this.listeners.add(l);

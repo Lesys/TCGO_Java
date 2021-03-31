@@ -81,6 +81,8 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		return this.clone();
 	}
 	
+	public abstract Carte getCopy() ;
+	
 	public abstract void reinitialisation();
 	
 	@Override
@@ -110,7 +112,7 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 	public abstract String toStringSave();
 	
 	public String infosToString() {
-		return this.getClass() + " ==> Nom: " + this.nom;
+		return this.nom;
 	}
 
 	@Override

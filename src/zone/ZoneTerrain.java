@@ -33,7 +33,7 @@ public abstract class ZoneTerrain extends Zone {
 		this.interfaceZone = new JPanel();
 		this.interfaceZone.setLayout(new GridLayout(1, 3));
 	}*/
-
+	
 	@Override
 	public boolean zonePleine() {
 		return this.cartes.size() >= 3;

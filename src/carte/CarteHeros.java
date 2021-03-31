@@ -77,4 +77,11 @@ public class CarteHeros extends Carte {
 			this.pv -= (cartePerso.getAttaque() > 0 ? cartePerso.getAttaque() : 0);
 		}
 	}
+
+	@Override
+	public Carte getCopy() {
+		CarteHeros carte = new CarteHeros(this.reference, this.nom, this.anime, this.effet, this.pv);
+	
+		return carte;
+	}
 }

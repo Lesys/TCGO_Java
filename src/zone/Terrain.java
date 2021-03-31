@@ -19,6 +19,11 @@ public class Terrain {
 		this.zoneSort2 = new ZoneSort();
 	}
 	
+	public boolean isAucunPerso() {
+		return this.zoneAttaque.zoneVide() && this.zoneDefense.zoneVide();
+	}
+	
+	
 	/** Réinitialise toutes les cartes sur le terrain (== début du tour)
 	 */
 	public void reinitialiser() {

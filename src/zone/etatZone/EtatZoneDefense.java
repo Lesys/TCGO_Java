@@ -23,6 +23,7 @@ public class EtatZoneDefense extends EtatZone {
 
 	@Override
 	public void repliquer(Carte cible) {
+		System.err.println("Replique de la défense");
 		// Ne peut pas répliquer (normalement)
 	}
 	

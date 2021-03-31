@@ -26,6 +26,26 @@ public class CartePerso extends CarteJeu {
 		super(reference, nom, anime, effet, nbExemplaire, cout);
 		this.pv = this.pvMax = pv;
 		this.attaque = this.attaqueInit = attaque;
+		this.nbAttaqueMax = 1;
+	}
+
+	/** Constructeur par défaut initialisant les paramètres basiques d'une carte + un nombre d'attaque max 
+	 * 
+	 * @param reference		La référence (ALPHABET + NUMERIQUE) de la carte
+	 * @param nom			Le nom de la carte
+	 * @param anime			L'animé d'où provient la carte
+	 * @param effet			L'effet (Stratégie) de la carte
+	 * @param nbExemplaire	Le nombre d'exemplaire maximum de cette carte dans un deck
+	 * @param pv			Le nombre de PV maximum de la carte
+	 * @param attaque		L'attaque initiale de la carte
+	 * @param cout			Le coût initial de la carte
+	 * @param nbAttaqueMax	Le nombre maximum d'attaque par tour
+	 */
+	public CartePerso(String reference, String nom, String anime, StrategieEffet effet, int nbExemplaire, int pv, int attaque, int cout, int nbAttaqueMax) {
+		super(reference, nom, anime, effet, nbExemplaire, cout);
+		this.pv = this.pvMax = pv;
+		this.attaque = this.attaqueInit = attaque;
+		this.nbAttaqueMax = nbAttaqueMax;
 	}
 
 	/** Accesseur (getter) sur les PV
@@ -71,12 +91,22 @@ public class CartePerso extends CarteJeu {
 	 * @return	Vrai si cette carte a au moins une attaque, faux sinon
 	 */
 	public boolean peutAttaquer() {
-		return this.nbAttaqueRestantes > 0 && this.effet.peutAttaquer();
+		return this.nbAttaqueRestantes > 0;// && (this.effet == null || (this.effet != null && this.effet.peutAttaquer()));
 	}
 
 	@Override
 	public void combattre(Carte c) {
-		this.etatZone.combattre(c);
+		if (this.peutAttaquer()) {
+			try {
+				this.etatZone.combattre(c);
+				this.nbAttaqueRestantes--;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			System.err.println("La carte ne peut plus attaquer");
+		}
 	}
 	
 	public String infosToString() {
@@ -95,7 +125,7 @@ public class CartePerso extends CarteJeu {
 	}
 	
 	public static CarteJeu creationCarteTest() {
-		return new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 3);
+		return new CartePerso("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 1);
 	}
 
 	@Override
@@ -111,5 +141,12 @@ public class CartePerso extends CarteJeu {
 			CartePerso cartePerso = (CartePerso) carte;
 			this.pv -= (cartePerso.getAttaque() > 0 ? cartePerso.getAttaque() : 0);
 		}
+	}
+
+	@Override
+	public Carte getCopy() {
+		CartePerso carte = new CartePerso(this.reference, this.nom, this.anime, this.effet, this.nbExemplaire, this.pv, this.attaque, this.cout);
+		carte.reinitialisation();
+		return carte;
 	}
 }
