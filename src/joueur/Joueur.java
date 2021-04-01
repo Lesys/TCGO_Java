@@ -10,6 +10,7 @@ import carte.CarteHeros;
 import carte.CarteJeu;
 import carte.CartePerso;
 import carte.CarteSort;
+import carte.ListeCarteHeros;
 import zone.Terrain;
 import zone.Zone;
 import zone.ZonePleineException;
@@ -190,7 +191,7 @@ public class Joueur {
 		this.refil();
 	}
 	
-	public void finTour() {
+	public void finTour() {			
 		this.tourDeJeu = false;
 		this.adversaire.debutTour();
 	}
@@ -232,10 +233,10 @@ public class Joueur {
 		joueur.pioche = Pioche.initTest();
 		joueur.defausse = Defausse.initTest();
 		joueur.zoneBannie = ZoneBannie.initTest();
-		joueur.heros = CarteHeros.initTest();
+		joueur.heros = ListeCarteHeros.getInstance().getRandomCarte();
 		joueur.terrain = Terrain.initTest();
 		
-		for (int i = 0; i < Main.debutMain; i++)
+		for (int i = 0; i < Main.DEBUT_MAIN; i++)
 			joueur.main.ajouterCarte(joueur.pioche.piocher());
 		joueur.main.ajouterCarte(new CarteSort("johan_card_verso.jpg", "Carte sort", "Animé de sort", null, 1, 4));
 		

@@ -46,7 +46,7 @@ public class CarteHeros extends Carte {
 
 	@Override
 	public String infosToString() {
-		return super.infosToString() + "\nHP: " + this.pv + "/" + this.pvMax;
+		return super.infosToString() + " HP: " + this.pv + "/" + this.pvMax;
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public class CarteHeros extends Carte {
 	}
 	
 	public static CarteHeros initTest() {
-		return new CarteHeros("johan_card_verso.jpg", "Héros de test", "anime", null, 4);
+		return new CarteHeros("PD001.png", "Héros de test", "anime", null, 4);
 		
 	}
 

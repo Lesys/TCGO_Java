@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.Consumer;
 
 import carte.CarteJeu;
 import view.IEnsembleListener;
@@ -119,6 +120,12 @@ public abstract class EnsembleCarte implements Iterable<CarteJeu> {
 	@Override
 	public Iterator<CarteJeu> iterator() {
 		return this.cartes.iterator();
+	}
+	
+	@Override
+	public void forEach(Consumer<? super CarteJeu> action) {
+		// TODO Auto-generated method stub
+		this.cartes.forEach(action);
 	}
 	
 	public int size() {

@@ -10,7 +10,7 @@ import zone.etatZone.EtatZoneSort;
 public class ZoneSort extends Zone {
 	public ZoneSort() {
 		super(new EtatZoneSort(null));
-		this.cartes = new ArrayList<>(1);
+		//this.cartes = new ArrayList<>(1);
 	}
 	
 	public void poserCarte(CarteSort carte) throws ZonePleineException {

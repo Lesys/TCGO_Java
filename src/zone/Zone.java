@@ -9,8 +9,6 @@ import zone.etatZone.EtatZone;
 
 public abstract class Zone extends EnsembleCarte {
 	protected EtatZone etatZone;
-	protected List<IEnsembleListener> listeners;
-	protected List<CarteJeu> cartes;
 	
 	public Zone(EtatZone etatZone) {
 		super("Zone");
@@ -39,11 +37,6 @@ public abstract class Zone extends EnsembleCarte {
 		}
 	}
 	
-	@Override
-	public Iterator<CarteJeu> iterator() {
-		return this.cartes.iterator();
-	}
-
 	public abstract boolean zonePleine();
 
 	public boolean zoneVide() {
@@ -68,10 +61,15 @@ public abstract class Zone extends EnsembleCarte {
 
 	@Override
 	public void reinitialisation() {
-		for (CarteJeu c : this)
+		//System.err.println("Reinitialisation de la zone " + this.nom + " ==> " + this.size());
+		this.forEach(c -> {
+			//System.err.println("Reinitialisation de la carte de la zone " + c.infosToString());
 			if (c.getEffet() != null)
 				c.getEffet().effetDebutTour();
-			else
+			else {
+				//System.err.println("Dans la zone, carte " + c.infosToString());
 				c.debutTour();
+			}
+		});
 	}
 }

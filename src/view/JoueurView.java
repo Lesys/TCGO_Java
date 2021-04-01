@@ -243,13 +243,15 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 
 	@Override
 	public void actualiser() {
-		this.buttonFinTour.setEnabled(this.joueur.peutJouer());
-		this.piocheView.refresh();
-		this.mainView.refresh();
-		this.defausseView.refresh();
-		this.zoneBannieView.refresh();
-		this.carteHerosView.refresh();
-		this.terrainView.refresh();
+		if (this.joueur.peutJouer()) {
+			this.joueur.refil();
+			this.piocheView.refresh();
+			this.mainView.refresh();
+			this.defausseView.refresh();
+			this.zoneBannieView.refresh();
+			this.carteHerosView.refresh();
+			this.terrainView.refresh();
+		}
 		repaint();
 	}
 

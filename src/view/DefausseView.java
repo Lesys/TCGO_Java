@@ -19,7 +19,7 @@ public class DefausseView extends DefaultView implements IEnsembleListener {
 	private TextField nbCarteDefausse;
 	
 	public DefausseView(Defausse defausse) {
-		ImagePanel verso = new ImagePanel("logo.png");
+		ImagePanel verso = new ImagePanel("PD001.png");
 		this.defausse = defausse;
 		//this.testMainView();
 		this.setLayout(new BorderLayout());

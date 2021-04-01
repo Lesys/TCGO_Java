@@ -1,6 +1,7 @@
 package carte;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Dictionary;
 import java.util.EventListener;
 import java.util.List;
 
@@ -25,6 +26,8 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 	protected StrategieEffet effet;
 	protected int nbExemplaire;
 	
+	protected Dictionary<String, Carte> listeCartes;
+	
 	/** Constructeur par défaut initialisant les paramètres basiques d'une carte 
 	 * 
 	 * @param reference		La référence (ALPHABET + NUMERIQUE) de la carte
@@ -43,6 +46,10 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		this.nbExemplaire = nbExemplaire;
 		
 		this.addMouseListener(this);
+	}
+	
+	public Carte getCarte(String reference) {
+		return this.listeCartes.get(reference);
 	}
 	
 	/**
@@ -122,11 +129,11 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (e.getSource() instanceof CarteJeu) {
-			CarteJeu carte = (CarteJeu)e.getSource();
+		if (e.getSource() instanceof Carte) {
+			Carte carte = (Carte)e.getSource();
 
 			if (SwingUtilities.isMiddleMouseButton(e)) {
-				WindowPopupCarteView popup = new WindowPopupCarteView(new ImagePanel(this.reference));
+				WindowPopupCarteView popup = new WindowPopupCarteView(carte);
 				popup.setVisible(true);
 			}
 		}

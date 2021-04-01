@@ -20,7 +20,7 @@ public class Terrain {
 	}
 	
 	public boolean isAucunPerso() {
-		return this.zoneAttaque.zoneVide() && this.zoneDefense.zoneVide();
+		return this.zoneAttaque.estVide() && this.zoneDefense.estVide();
 	}
 	
 	
@@ -29,24 +29,9 @@ public class Terrain {
 	public void reinitialiser() {
 		System.out.println("Réinitialisation " + this.nom);
 		this.zoneAttaque.reinitialisation();
-
-		for (CarteJeu c : this.zoneDefense)
-			if (c.getEffet() != null)
-				c.getEffet().effetDebutTour();
-			else
-				c.debutTour();
-
-		for (CarteJeu c : this.zoneSort1)
-			if (c.getEffet() != null)
-				c.getEffet().effetDebutTour();
-			else
-				c.debutTour();
-
-		for (CarteJeu c : this.zoneSort2)
-			if (c.getEffet() != null)
-				c.getEffet().effetDebutTour();
-			else
-				c.debutTour();
+		this.zoneDefense.reinitialisation();
+		this.zoneSort1.reinitialisation();
+		this.zoneSort2.reinitialisation();
 	}
 	
 	public ZoneTerrainAttaque getZoneAttaque() {

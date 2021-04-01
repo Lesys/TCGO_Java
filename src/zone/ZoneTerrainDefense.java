@@ -8,7 +8,7 @@ import zone.etatZone.EtatZoneDefense;
 public class ZoneTerrainDefense extends ZoneTerrain {
 	public ZoneTerrainDefense() {
 		super(new EtatZoneDefense(null));
-		this.cartes = new ArrayList<>(3);
+		//this.cartes = new ArrayList<>(3);
 	}
 
 	/** Retourne la carte de la liste en position 1 (la position influe sur celle du terrain)

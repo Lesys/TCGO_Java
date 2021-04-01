@@ -4,9 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.util.Enumeration;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import carte.Carte;
+import carte.ListeCarte;
+import carte.ListeCarteHeros;
+import carte.ListeCartePerso;
 
 public class JeuUI extends JPanel implements Observateur, ActionListener, Fenetre {
 	/** Taille de la cellule (en pixel ?)
@@ -60,6 +66,11 @@ public class JeuUI extends JPanel implements Observateur, ActionListener, Fenetr
 
 		this.jouerButton = new ButtonExecuter("Lancer le jeu", StrategieButtonChoixJoueurs.getInstance());
 		this.jouerButton.addActionListener(this);
+		
+		// Lancement du chargement des cartes
+		ListeCartePerso listePersos = ListeCartePerso.getInstance();
+		ListeCarteHeros listeHeros = ListeCarteHeros.getInstance();
+
 
 		/*this.slider = new JSlider(1, 10);
 		this.slider.setPaintLabels(true);

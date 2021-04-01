@@ -126,7 +126,7 @@ public class MyOptionPane {
     private JPanel createZones(ZoneTerrain zone, int iDebut) {
     	JPanel cartes = new JPanel(new GridLayout());
         i = iDebut;
-    	zone.iterator().forEachRemaining(carte -> {
+    	zone.forEach(carte -> {
     		int j = i++;
             //JButton button = new JButton(carte.infosToString());
     		CarteJeu newCarte = (CarteJeu)carte.getCopy(); 

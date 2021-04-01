@@ -2,6 +2,8 @@ package view;
 
 import java.awt.GridLayout;
 
+import javax.swing.JOptionPane;
+
 import carte.CarteJeu;
 import ensemble.Main;
 

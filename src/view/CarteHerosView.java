@@ -32,6 +32,6 @@ public class CarteHerosView extends DefaultView {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.strategieView.executer(this);
+		//this.carteHeros.mouseClicked(e);
 	}
 }

@@ -11,6 +11,7 @@ import java.util.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,6 +19,7 @@ import carte.Carte;
 import carte.CartePerso;
 import effet.StrategieEffet;
 import effet.StrategieEffetBonusPersoMemeZone;
+import ensemble.Main;
 import joueur.*;
 import view.JoueurView;
 import view.PiocheView;
@@ -197,13 +199,27 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		// Il n'y a qu'un seul bouton
 		if (o instanceof ButtonExecuter) {
 			ButtonExecuter butt = (ButtonExecuter)o;
+			JoueurView jv = this.joueurView1;
+			ButtonExecuter bt = this.buttonFinTourJ1;
+			
+			// Récupère les bons éléments en fonction du boutton appuyé
 			if (butt == this.buttonFinTourJ1) {
-				butt.executer(joueurView1);
+				jv = this.joueurView1;
+				bt = this.buttonFinTourJ1;
 			}
 			else if (butt == this.buttonFinTourJ2) {
-				butt.executer(joueurView2);
+				jv = this.joueurView2;
+				bt = this.buttonFinTourJ2;
 			}
-			this.actualiser();
+
+			// Obligé de vérifier ici sinon l'actualisation redonne la possibilité d'attaquer
+			if (jv.getJoueur().getMain().isTooMuch()) {
+				JOptionPane.showMessageDialog(jv, jv.getJoueur().getNom() + ", vous devez vous débarasser d'au moins " + Integer.toString(jv.getJoueur().getMain().size() - Main.MAX_MAIN) + " avant de finir votre tour");
+			}
+			else {
+				bt.executer(jv);
+				this.actualiser();
+			}
 			/*
 			if (!this.pseudoJoueur1.getText().equals("") && !this.pseudoJoueur2.getText().equals(""))
 				((ButtonExecuter)o).executer(this);*/
