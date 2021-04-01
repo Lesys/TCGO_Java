@@ -15,4 +15,6 @@ public interface Fenetre {
 	 * @param color			La couleur avec laquelle afficher le message
 	 */
 	//public void majPseudos(HashMap<String, Color> pseudos, String texte, Color color);
+	
+	public void actualiser();
 }

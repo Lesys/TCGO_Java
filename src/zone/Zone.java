@@ -1,19 +1,19 @@
 package zone;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.*;
 
 import carte.CarteJeu;
+import ensemble.EnsembleCarte;
 import view.IEnsembleListener;
 import zone.etatZone.EtatZone;
 
-public abstract class Zone implements Iterable<CarteJeu>, MouseListener {
+public abstract class Zone extends EnsembleCarte {
 	protected EtatZone etatZone;
 	protected List<IEnsembleListener> listeners;
 	protected List<CarteJeu> cartes;
 	
 	public Zone(EtatZone etatZone) {
+		super("Zone");
 		this.etatZone = etatZone;
 		
 		this.listeners = new ArrayList<>();
@@ -28,8 +28,7 @@ public abstract class Zone implements Iterable<CarteJeu>, MouseListener {
 			carte.setEtatZone(etatCarte);
 			System.out.println("EtatZone de la carte posée: " + carte.getEtatZone());
 			
-			this.cartes.add(carte);
-			this.onAddListener(carte);
+			this.ajouterCarte(carte);
 			
 			
 			// TODO Mettre la bonne zoneEtat à la carte (faire dans chaque classe?)
@@ -68,32 +67,11 @@ public abstract class Zone implements Iterable<CarteJeu>, MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void reinitialisation() {
+		for (CarteJeu c : this)
+			if (c.getEffet() != null)
+				c.getEffet().effetDebutTour();
+			else
+				c.debutTour();
 	}
 }

@@ -51,4 +51,9 @@ public class MainView extends DefaultView implements IEnsembleListener {
 
 		this.refresh();
 	}
+
+	@Override
+	public void onDestroy(CarteJeu carteDestroyed) {
+		this.onRemove(carteDestroyed);
+	}
 }

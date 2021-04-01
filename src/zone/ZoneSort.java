@@ -35,4 +35,14 @@ public class ZoneSort extends Zone {
 		super.poserCarte(carte, 1);
 		
 	}
+
+	@Override
+	public void reinitialisation() {
+		for (CarteJeu c : this)
+			if (c.getEffet() != null)
+				c.getEffet().effetDebutTour();
+			else
+				c.debutTour();
+		
+	}
 }

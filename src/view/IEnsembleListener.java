@@ -24,4 +24,5 @@ public interface IEnsembleListener extends MouseListener{
 	
 	public void onRemove(CarteJeu carteRemoved);
 	public void onAdd(CarteJeu carteAdded);
+	public void onDestroy(CarteJeu carteDestroyed);
 }

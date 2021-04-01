@@ -38,6 +38,13 @@ public class MainListener implements IEnsembleListener {
 	public void onAdd(CarteJeu carteAdded) {
 		carteAdded.addMouseListener(this);
 	}
+	
+	@Override
+	public void onDestroy(CarteJeu carteDestroyed) {
+    	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carteDestroyed);
+		//this.main.onRemoveListener(carteJeu.get());
+    	this.joueur.defausser(carteJeu.get());
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {		
@@ -107,8 +114,7 @@ public class MainListener implements IEnsembleListener {
 				}
 			}
 			else if (SwingUtilities.isRightMouseButton(e)) {
-            	Optional<CarteJeu> carteJeu = this.main.recupererCarte(carte);
-				this.main.onRemoveListener(carteJeu.get());
+				this.onDestroy(carte);
 			}
 		}
 	}

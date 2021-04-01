@@ -84,4 +84,9 @@ public class CarteHeros extends Carte {
 	
 		return carte;
 	}
+
+	@Override
+	public void debutTour() {
+		// Rien pour le moment
+	}
 }

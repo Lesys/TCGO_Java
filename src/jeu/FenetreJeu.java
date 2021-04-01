@@ -46,6 +46,8 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 
 	private JTextField pseudoJoueur1;
 	private JTextField pseudoJoueur2;
+	private ButtonExecuter buttonFinTourJ1;
+	private ButtonExecuter buttonFinTourJ2;
 
 	/*
 	private JComboBox<TypeJoueur> typeJoueur1;
@@ -70,20 +72,48 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		JPanel center = new JPanel();
 		// new GridLayout(nbLignes, nbColonnes)
 		center.setLayout(new GridLayout(2, 1));
+
+		this.buttonFinTourJ1 = new ButtonExecuter("Fin du tour J1", StrategieButtonFinTour.getInstance());
+		this.buttonFinTourJ1.addActionListener(this);
+		this.buttonFinTourJ2 = new ButtonExecuter("Fin du tour J2", StrategieButtonFinTour.getInstance());
+		this.buttonFinTourJ2.addActionListener(this);
 		
-		this.plateauJoueur1 = new JPanel();
+		/*this.plateauJoueur1 = new JPanel();
 		this.plateauJoueur1.setLayout(new GridLayout(1, 2));
 		
 		this.plateauJoueur2 = new JPanel();
 		this.plateauJoueur2.setLayout(new GridLayout(1, 2));
+*/
 
 		this.joueurView1 = new JoueurView(1);
 		this.joueurView2 = new JoueurView(2);
-		center.add(this.joueurView1);
-		center.add(this.joueurView2);
+		
+		this.buttonFinTourJ1 = new ButtonExecuter("Fin du tour J1", StrategieButtonFinTour.getInstance());
+		this.buttonFinTourJ1.addActionListener(this);
+		this.buttonFinTourJ2 = new ButtonExecuter("Fin du tour J2", StrategieButtonFinTour.getInstance());
+		this.buttonFinTourJ2.addActionListener(this);
+
+		JPanel viewJ1 = new JPanel(new BorderLayout());		
+		viewJ1.add(this.joueurView1, BorderLayout.CENTER);
+		viewJ1.add(this.buttonFinTourJ1, BorderLayout.SOUTH);
+		
+		JPanel viewJ2 = new JPanel(new BorderLayout());
+		viewJ2.add(this.joueurView2, BorderLayout.CENTER);
+		viewJ2.add(this.buttonFinTourJ2, BorderLayout.NORTH);
+		
+		/*JPanel buttons = new JPanel(new BorderLayout());
+		buttons.add(this.buttonFinTourJ1, BorderLayout.NORTH);
+		buttons.add(this.buttonFinTourJ2, BorderLayout.SOUTH);*/
+		
+		center.add(viewJ1);
+		//center.add(buttons);
+		center.add(viewJ2);
+
 
 		this.joueurView1.getJoueur().setJoueurAdverse(this.joueurView2.getJoueur());
 		this.joueurView2.getJoueur().setJoueurAdverse(this.joueurView1.getJoueur());
+		this.joueurView1.getJoueur().debutTour();
+		this.actualiser();
 		
 		// Tests
 		// Les TextFields sont dans le bon sens (chaque joueur a sa partie 2 en dessous de la partie 1)
@@ -166,6 +196,14 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		Object o = e.getSource();
 		// Il n'y a qu'un seul bouton
 		if (o instanceof ButtonExecuter) {
+			ButtonExecuter butt = (ButtonExecuter)o;
+			if (butt == this.buttonFinTourJ1) {
+				butt.executer(joueurView1);
+			}
+			else if (butt == this.buttonFinTourJ2) {
+				butt.executer(joueurView2);
+			}
+			this.actualiser();
 			/*
 			if (!this.pseudoJoueur1.getText().equals("") && !this.pseudoJoueur2.getText().equals(""))
 				((ButtonExecuter)o).executer(this);*/
@@ -192,4 +230,13 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		
 		return liste;
 	}*/
+
+	@Override
+	public void actualiser() {
+		this.joueurView1.actualiser();
+		this.joueurView2.actualiser();
+
+		this.buttonFinTourJ1.setEnabled(this.joueurView1.getJoueur().peutJouer());
+		this.buttonFinTourJ2.setEnabled(this.joueurView2.getJoueur().peutJouer());
+	}
 }

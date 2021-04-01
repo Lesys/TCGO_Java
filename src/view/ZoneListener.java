@@ -1,8 +1,12 @@
 package view;
 
 import java.awt.event.MouseEvent;
+import java.util.Optional;
+
+import javax.swing.SwingUtilities;
 
 import carte.CarteJeu;
+import carte.CartePerso;
 import ensemble.Main;
 import joueur.Joueur;
 import zone.Zone;
@@ -22,20 +26,39 @@ public class ZoneListener implements IEnsembleListener {
 		this.zone.iterator().forEachRemaining(carte -> {carte.addMouseListener(this); });
 		this.zone.addListener(this);
 	}
-	
+
+	@Override
 	public void onRemove(CarteJeu carteRemoved) {
 		System.out.println("On Remove ZoneListener");
 		carteRemoved.removeMouseListener(this);
 	}
 
+	@Override
 	public void onAdd(CarteJeu carteAdded) {
 		System.out.println("On add ZoneListener");
 		carteAdded.addMouseListener(this);
 	}
 
 	@Override
+	public void onDestroy(CarteJeu carteDestroyed) {
+    	Optional<CarteJeu> carteJeu = this.zone.recupererCarte(carteDestroyed);
+		//this.main.onRemoveListener(carteJeu.get());
+    	this.joueur.defausser(carteJeu.get());
+	}
+
+	@Override
 	public void mouseClicked(MouseEvent e) {		
 		System.out.println("ZoneListener a entendu quelque chose: " + e.getSource()); // retourne CartePerso
+
+		/*if (e.getSource() instanceof CarteJeu) {
+			CarteJeu carte = (CarteJeu)e.getSource();
+			if (SwingUtilities.isRightMouseButton(e)) {
+				System.err.println("Affichage des cartes de la zone: " + this.zone.size());
+		    	Optional<CarteJeu> carteJeu = this.zone.recupererCarte(carte);
+				//this.main.onRemoveListener(carteJeu.get());
+		    	this.joueur.defausser(carteJeu.get());
+			}
+		}*/
 	}
 
 	@Override

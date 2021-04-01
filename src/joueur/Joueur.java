@@ -32,6 +32,7 @@ public class Joueur {
 	private int energieSupp;
 	
 	private boolean abandon;
+	private boolean tourDeJeu;
 	
 	private Terrain terrain;
 	private Main main;
@@ -96,6 +97,7 @@ public class Joueur {
 	public Joueur(String nom, TypeJoueur type) {
 		this.nom = nom;
 		this.type = type;
+		this.tourDeJeu = false;
 
 		// Création des différents ensembles de cartes
 		this.main = new Main(this.nom);
@@ -109,6 +111,9 @@ public class Joueur {
 		this.refil();
 	}
 
+	public String getNom() {
+		return this.nom;
+	}
 	
 	public Terrain getTerrain() {
 		return this.terrain;
@@ -142,6 +147,9 @@ public class Joueur {
 		this.adversaire = adversaire;
 	}
 
+	public boolean peutJouer() {
+		return this.tourDeJeu;
+	}
 
 	public void jouerCarte(CarteJeu carte, Zone zone) {
 		try {
@@ -161,6 +169,10 @@ public class Joueur {
 		}
 	}
 	
+	public void defausser(CarteJeu carte) {
+		this.defausse.ajouterCarte(carte);
+	}
+	
 	public void selectionDeck() {
 		//this.heros = heros;
 	}
@@ -173,10 +185,21 @@ public class Joueur {
 		this.energieSupp -= this.energieSupp - retrait > 0 ? retrait : this.energieSupp;
 	}
 	
+	public void debutTour() {
+		this.tourDeJeu = true;
+		this.refil();
+	}
+	
+	public void finTour() {
+		this.tourDeJeu = false;
+		this.adversaire.debutTour();
+	}
+	
 	/** Réinitialise le joueur pour une nouvelle partie (!= refil)
 	 */
 	public void reinitialisationNouvellePartie() {
 		this.abandon = false;
+		this.tourDeJeu = false;
 		this.energieMax = Joueur.energieBase;
 		this.energieSupp = 0;
 	}

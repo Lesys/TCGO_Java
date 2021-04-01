@@ -39,6 +39,12 @@ public class ZoneTerrainView extends ZoneView implements IEnsembleListener {
 
 		this.refresh();
 	}
+
+	@Override
+	public void onDestroy(CarteJeu carteDestroyed) {
+		System.err.println("Destroying in terrain");
+		this.onRemove(carteDestroyed);
+	}
 	
 	//TODO Ajouter comme les autres view pour rafraîchir + un listener
 }

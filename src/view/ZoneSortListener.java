@@ -17,7 +17,8 @@ public class ZoneSortListener extends ZoneListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {		
-		System.out.println("ZoneSortListener a entendu quelque chose: " + e.getSource()); // retourne CartePerso
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("ZoneSortListener a entendu quelque chose: " + e.getSource()); // retourne CarteSort
+		super.mouseClicked(e);
 	}
 }

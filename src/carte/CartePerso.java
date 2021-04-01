@@ -1,5 +1,8 @@
 package carte;
+import java.awt.event.MouseListener;
+
 import effet.StrategieEffet;
+import view.IEnsembleListener;
 
 
 public class CartePerso extends CarteJeu {
@@ -91,7 +94,11 @@ public class CartePerso extends CarteJeu {
 	 * @return	Vrai si cette carte a au moins une attaque, faux sinon
 	 */
 	public boolean peutAttaquer() {
-		return this.nbAttaqueRestantes > 0;// && (this.effet == null || (this.effet != null && this.effet.peutAttaquer()));
+		return this.nbAttaqueRestantes > 0 && this.pv > 0;// && (this.effet == null || (this.effet != null && this.effet.peutAttaquer()));
+	}
+	
+	public void debutTour() {
+		this.reinitialisationNbAttaque();
 	}
 
 	@Override
@@ -148,5 +155,16 @@ public class CartePerso extends CarteJeu {
 		CartePerso carte = new CartePerso(this.reference, this.nom, this.anime, this.effet, this.nbExemplaire, this.pv, this.attaque, this.cout);
 		carte.reinitialisation();
 		return carte;
+	}
+	
+	@Override
+	public void isDestroyed() {
+		super.isDestroyed();
+		
+		for (MouseListener ml : this.getMouseListeners()) {
+			if (ml != this && ml instanceof IEnsembleListener) {
+				((IEnsembleListener)ml).onDestroy(this);
+			}
+		}
 	}
 }

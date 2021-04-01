@@ -38,4 +38,9 @@ public class ZoneSortView extends ZoneView implements IEnsembleListener {
 
 		this.refresh();
 	}
+
+	@Override
+	public void onDestroy(CarteJeu carteDestroyed) {
+		this.onRemove(carteDestroyed);
+	}
 }

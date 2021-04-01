@@ -135,4 +135,10 @@ public class FenetreCreationJoueurs extends JFrame implements ActionListener, Fe
 		
 		return liste;
 	}
+
+	@Override
+	public void actualiser() {
+		// TODO Auto-generated method stub
+		
+	}
 }

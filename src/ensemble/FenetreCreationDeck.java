@@ -137,4 +137,10 @@ public class FenetreCreationDeck extends JFrame implements ActionListener, Fenet
 		
 		return liste;
 	}
+
+	@Override
+	public void actualiser() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -9,10 +9,9 @@ import java.util.Random;
 
 import carte.CarteJeu;
 import view.IEnsembleListener;
-import view.MainListener;
 
 
-public abstract class EnsembleCarte {	
+public abstract class EnsembleCarte implements Iterable<CarteJeu> {	
 	protected LinkedList<CarteJeu> cartes;
 	protected List<IEnsembleListener> listeners;
 	protected String nom;
@@ -117,6 +116,7 @@ public abstract class EnsembleCarte {
 		return this.cartes.isEmpty();
 	}
 	
+	@Override
 	public Iterator<CarteJeu> iterator() {
 		return this.cartes.iterator();
 	}

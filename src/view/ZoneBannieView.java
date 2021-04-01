@@ -13,6 +13,9 @@ public class ZoneBannieView extends DefaultView {
 	private static final long serialVersionUID = 703670730001252355L;
 
 	private ZoneBannie zoneBannie;
+
+	private TextField nbCarteBannie;
+
 	
 	public ZoneBannieView(ZoneBannie zoneBannie) {
 		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
@@ -21,7 +24,14 @@ public class ZoneBannieView extends DefaultView {
 		this.setLayout(new BorderLayout());
 
 		this.add(verso, BorderLayout.CENTER);
-		
-		this.add(new TextField(Integer.toString(this.zoneBannie.size())), BorderLayout.SOUTH);
+
+		this.nbCarteBannie = new TextField(Integer.toString(this.zoneBannie.size()));
+		this.add(this.nbCarteBannie, BorderLayout.SOUTH);
+	}
+	
+	@Override
+	public void refresh() {
+		super.refresh();
+		this.nbCarteBannie.setText(Integer.toString(this.zoneBannie.size()));
 	}
 }

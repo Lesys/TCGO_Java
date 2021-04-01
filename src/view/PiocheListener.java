@@ -8,17 +8,20 @@ import javax.swing.SwingUtilities;
 
 import ensemble.Main;
 import ensemble.Pioche;
+import joueur.Joueur;
+import joueur.NotYourTurnException;
 
 public class PiocheListener implements MouseListener {
 	private Pioche pioche;
 	private Main main;
+	private Joueur joueur;
 	
 	private WindowPopupEnsembleCarteView popup;
 	
-	public PiocheListener(Pioche pioche, Main main) {
+	public PiocheListener(Pioche pioche, Main main, Joueur joueur) {
 		this.pioche = pioche;
 		this.main = main;
-
+		this.joueur = joueur;
 	}
 
 	@Override
@@ -31,11 +34,15 @@ public class PiocheListener implements MouseListener {
 		}			
 		else if (SwingUtilities.isLeftMouseButton(e)) {
 			try {
+				if (!this.joueur.peutJouer())
+					throw new NotYourTurnException(this.joueur);
 				this.main.ajouterCarte(this.pioche.piocherDebutTour());
 			} catch (NullPointerException ex) {
 				System.out.println("Attendez le début du tour pour piocher");
 			} catch (NoSuchElementException ex) {
 				System.out.println("il n'y a plus de carte dans la pioche");
+			} catch (NotYourTurnException ex) {
+				System.err.println(ex.getMessage());
 			}
 			
 			//System.out.println(e.getSource()); // retourne PiocheView

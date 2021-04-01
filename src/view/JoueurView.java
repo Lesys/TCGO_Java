@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.*;
@@ -11,6 +12,7 @@ import jeu.ButtonExecuter;
 import jeu.Fenetre;
 import jeu.Jeu;
 import jeu.Observateur;
+import jeu.StrategieButtonFinTour;
 import joueur.Joueur;
 
 public class JoueurView extends JPanel implements Observateur, ActionListener, Fenetre {
@@ -42,6 +44,8 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 	private ZoneBannieListener zoneBannieListener;
 	
 	private JFrame window;
+	
+	private ButtonExecuter buttonFinTour;
 	
 	public JoueurView(Jeu jeu) {
 		//this.jeu = jeu;
@@ -102,8 +106,12 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		this.zoneBannieView = new ZoneBannieView(this.joueur.getZoneBannie());
 		
 		this.carteHerosView = new CarteHerosView(this.joueur.getHeros());
+		
+		this.buttonFinTour = new ButtonExecuter("Fin du tour", StrategieButtonFinTour.getInstance());
+		this.buttonFinTour.addActionListener(this);
+		
 		//this.add(this.carteHerosView);
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new GridLayout(3, 1));
 		
 		JPanel mainHeros = new JPanel();
 		mainHeros.setLayout(new GridLayout(2, 1));
@@ -116,6 +124,9 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		
 		JPanel defausseBannie = new JPanel();
 		defausseBannie.setLayout(new GridLayout(1, 2));
+		
+		JPanel buttons = new JPanel(new BorderLayout());
+		buttons.add(this.buttonFinTour, BorderLayout.NORTH);
 
 		// Ajout à la fenêtre pour affichage
 		if (num == 1) {
@@ -127,6 +138,7 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 			mainHeros.add(this.mainView);
 			this.add(mainHeros);
 			this.add(plateau);
+			//this.add(buttons);
 			plateau.add(piocheDefausse);
 			plateau.add(this.terrainView);
 
@@ -149,6 +161,7 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 			
 			plateau.add(this.terrainView);
 			plateau.add(piocheDefausse);
+			//this.add(buttons);
 			this.add(plateau);
 			this.add(mainHeros);
 			mainHeros.add(this.mainView);
@@ -174,7 +187,7 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		this.mainView.addMouseListener(this.mainListener);
 		
 		// Pioche
-		this.piocheListener = new PiocheListener(this.joueur.getPioche(), this.joueur.getMain());
+		this.piocheListener = new PiocheListener(this.joueur.getPioche(), this.joueur.getMain(), this.joueur);
 		this.piocheView.addMouseListener(this.piocheListener);
 
 		// Defausse
@@ -220,13 +233,23 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("Bouton pressed");
 		Object o = e.getSource();
-		if (o instanceof ButtonExecuter)
+		if (o instanceof ButtonExecuter) {
+			System.out.println("Bouton instanced");
 			((ButtonExecuter)o).executer(this);
+		}
 	}
 
 	@Override
 	public void actualiser() {
+		this.buttonFinTour.setEnabled(this.joueur.peutJouer());
+		this.piocheView.refresh();
+		this.mainView.refresh();
+		this.defausseView.refresh();
+		this.zoneBannieView.refresh();
+		this.carteHerosView.refresh();
+		this.terrainView.refresh();
 		repaint();
 	}
 

@@ -28,17 +28,25 @@ public class Terrain {
 	 */
 	public void reinitialiser() {
 		System.out.println("Réinitialisation " + this.nom);
-		for (CarteJeu c : this.zoneAttaque)
-			c.getEffet().effetDebutTour();
+		this.zoneAttaque.reinitialisation();
 
 		for (CarteJeu c : this.zoneDefense)
-			c.getEffet().effetDebutTour();
+			if (c.getEffet() != null)
+				c.getEffet().effetDebutTour();
+			else
+				c.debutTour();
 
 		for (CarteJeu c : this.zoneSort1)
-			c.getEffet().effetDebutTour();
+			if (c.getEffet() != null)
+				c.getEffet().effetDebutTour();
+			else
+				c.debutTour();
 
 		for (CarteJeu c : this.zoneSort2)
-			c.getEffet().effetDebutTour();
+			if (c.getEffet() != null)
+				c.getEffet().effetDebutTour();
+			else
+				c.debutTour();
 	}
 	
 	public ZoneTerrainAttaque getZoneAttaque() {

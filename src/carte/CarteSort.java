@@ -56,4 +56,9 @@ public class CarteSort extends CarteJeu {
 	
 		return carte;
 	}
+
+	@Override
+	public void debutTour() {
+		// Rien pour le moment 
+	}
 }

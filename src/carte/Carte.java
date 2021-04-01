@@ -1,11 +1,14 @@
 package carte;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.EventListener;
+import java.util.List;
 
 import javax.swing.SwingUtilities;
 
 import effet.StrategieEffet;
 import images.ImagePanel;
+import view.IEnsembleListener;
 import view.WindowPopupCarteView;
 
 
@@ -85,6 +88,8 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 	
 	public abstract void reinitialisation();
 	
+	public abstract void debutTour();
+	
 	@Override
 	public boolean equals(Object o) {
 		boolean retour = false;
@@ -149,5 +154,12 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/** Événement à lancer quand la carte est détruite
+	 */
+	public void isDestroyed() {
+		System.err.println("La carte " + this.getClass() + " doit être détruite");
+		System.err.println("Nombre de listeners: " + this.getMouseListeners().length);
 	}
 }
