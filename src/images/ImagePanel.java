@@ -11,11 +11,16 @@ import javax.swing.JPanel;
 
 public class ImagePanel extends JPanel{
 
+	private final int LENGTH_FIN_REF = 7;
     private BufferedImage image;
 
     public ImagePanel(String link) {
        try {
-          image = ImageIO.read(this.getClass().getResource("/images/" + link));
+    	   String path = "";
+    	   if (!link.equals("logo.png") && !link.equals("johan_card_verso.jpg"))
+    		   path = link.substring(0, link.length() - LENGTH_FIN_REF) + "/";
+    	   //System.out.println("path: " + path);
+          image = ImageIO.read(this.getClass().getResource("/images/" + path + link));
        } catch (IOException ex) {
     	   ex.printStackTrace();
        }
