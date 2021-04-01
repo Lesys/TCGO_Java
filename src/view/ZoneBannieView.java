@@ -18,7 +18,7 @@ public class ZoneBannieView extends DefaultView {
 
 	
 	public ZoneBannieView(ZoneBannie zoneBannie) {
-		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
+		ImagePanel verso = new ImagePanel("logo.png");
 		this.zoneBannie = zoneBannie;
 		//this.testMainView();
 		this.setLayout(new BorderLayout());

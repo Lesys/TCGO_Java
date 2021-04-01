@@ -14,8 +14,8 @@ public class ImagePanel extends JPanel{
     private BufferedImage image;
 
     public ImagePanel(String link) {
-       try {                
-          image = ImageIO.read(new File(link));
+       try {
+          image = ImageIO.read(this.getClass().getResource("/images/" + link));
        } catch (IOException ex) {
     	   ex.printStackTrace();
        }

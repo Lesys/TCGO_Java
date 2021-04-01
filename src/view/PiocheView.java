@@ -17,7 +17,7 @@ public class PiocheView extends DefaultView {
 	private TextField nbPiocheRestante;
 	
 	public PiocheView(Pioche pioche) {
-		ImagePanel verso = new ImagePanel("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png");
+		ImagePanel verso = new ImagePanel("logo.png");
 		this.pioche = pioche;
 
 		this.strategieView = StrategieViewAfficherProprieteCarte.getInstance();

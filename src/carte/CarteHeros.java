@@ -61,7 +61,7 @@ public class CarteHeros extends Carte {
 	}
 	
 	public static CarteHeros initTest() {
-		return new CarteHeros("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "Héros de test", "anime", null, 4);
+		return new CarteHeros("johan_card_verso.jpg", "Héros de test", "anime", null, 4);
 		
 	}
 

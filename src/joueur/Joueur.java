@@ -237,14 +237,14 @@ public class Joueur {
 		
 		for (int i = 0; i < Main.debutMain; i++)
 			joueur.main.ajouterCarte(joueur.pioche.piocher());
-		joueur.main.ajouterCarte(new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg", "Carte sort", "Animé de sort", null, 1, 4));
+		joueur.main.ajouterCarte(new CarteSort("johan_card_verso.jpg", "Carte sort", "Animé de sort", null, 1, 4));
 		
-		joueur.main.ajouterCarte(new CarteSort("/home/alexis/Documents/Java/TCGO_Java/src/images/logo.png", "Carte sort", "Animé de sort", null, 1, 4));
+		joueur.main.ajouterCarte(new CarteSort("logo.png", "Carte sort", "Animé de sort", null, 1, 4));
 
 		//System.out.println(joueur.heros.toString());
 		//joueur.main.iterator().forEachRemaining(c -> System.out.println(c.getReference()));
 		
-		Optional<CarteJeu> carteJeu = joueur.main.recupererCarte("/home/alexis/Documents/Java/TCGO_Java/src/images/johan_card_verso.jpg");
+		Optional<CarteJeu> carteJeu = joueur.main.recupererCarte("johan_card_verso.jpg");
 		
 		if (carteJeu.isPresent())
 			joueur.defausse.ajouterCarte(carteJeu.get());
