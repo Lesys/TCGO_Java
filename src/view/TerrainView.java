@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -49,8 +51,10 @@ public class TerrainView extends DefaultView {
 		zoneDefenseViewLabels.add(new JLabel("DEF 2"));
 		zoneDefenseViewLabels.add(new JLabel("DEF 3"));
 		zoneDefenseView.add(zoneDefenseViewLabels, BorderLayout.NORTH);*/
-		
-		this.setLayout(new GridLayout(2, 2));
+
+		//this.setLayout(new GridLayout(2, 2));
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints(); 
 		
 		if (reverse) {
 			// ZONE DEFENSE - ZONE SORT 2
@@ -61,10 +65,13 @@ public class TerrainView extends DefaultView {
 			this.add(this.zoneAttaque);
 			this.add(this.zoneSort2);
 			this.add(this.zoneDefense);*/
-			this.add(zoneSort1View);
-			this.add(zoneAttaqueView);
-			this.add(zoneSort2View);
-			this.add(zoneDefenseView);
+			this.add(zoneSort1View, c);
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			this.add(zoneAttaqueView, c);
+			c.gridwidth = 1;
+			this.add(zoneSort2View, c);
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			this.add(zoneDefenseView, c);
 		}
 		else {
 			// ZONE SORT 1 - ZONE ATTAQUE
@@ -75,10 +82,13 @@ public class TerrainView extends DefaultView {
 			this.add(this.zoneAttaque);
 			this.add(this.zoneSort1);*/
 
-			this.add(zoneDefenseView);
-			this.add(zoneSort2View);
-			this.add(zoneAttaqueView);
-			this.add(zoneSort1View);
+			this.add(zoneDefenseView, c);
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			this.add(zoneSort2View, c);
+			c.gridwidth = 1;
+			this.add(zoneAttaqueView, c);
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			this.add(zoneSort1View, c);
 		}
 	}
 	

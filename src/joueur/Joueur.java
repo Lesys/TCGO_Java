@@ -240,7 +240,7 @@ public class Joueur {
 			joueur.main.ajouterCarte(joueur.pioche.piocher());
 		joueur.main.ajouterCarte(new CarteSort("johan_card_verso.jpg", "Carte sort", "Animé de sort", null, 1, 4));
 		
-		joueur.main.ajouterCarte(new CarteSort("logo.png", "Carte sort", "Animé de sort", null, 1, 4));
+		joueur.main.ajouterCarte(new CarteSort("johan_card_verso.png", "Carte sort", "Animé de sort", null, 1, 4));
 
 		//System.out.println(joueur.heros.toString());
 		//joueur.main.iterator().forEachRemaining(c -> System.out.println(c.getReference()));

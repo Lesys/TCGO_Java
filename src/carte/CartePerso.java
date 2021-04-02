@@ -133,7 +133,7 @@ public class CartePerso extends CarteJeu {
 	}
 	
 	public static CarteJeu creationCarteTest() {
-		return new CartePerso("johan_card_verso.jpg", "nom", "anime", null, 1, 5, 2, 1);
+		return new CartePerso("johan_card_verso.png", "nom", "anime", null, 1, 5, 2, 1);
 	}
 
 	@Override

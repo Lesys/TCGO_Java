@@ -20,6 +20,7 @@ public class DefausseView extends DefaultView implements IEnsembleListener {
 	
 	public DefausseView(Defausse defausse) {
 		ImagePanel verso = new ImagePanel("PD001.png");
+		verso.resize();
 		this.defausse = defausse;
 		//this.testMainView();
 		this.setLayout(new BorderLayout());

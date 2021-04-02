@@ -1,6 +1,8 @@
 package jeu;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -73,7 +75,7 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 
 		JPanel center = new JPanel();
 		// new GridLayout(nbLignes, nbColonnes)
-		center.setLayout(new GridLayout(2, 1));
+		center.setLayout(new GridBagLayout()); //TODO 2,1
 
 		this.buttonFinTourJ1 = new ButtonExecuter("Fin du tour J1", StrategieButtonFinTour.getInstance());
 		this.buttonFinTourJ1.addActionListener(this);
@@ -106,10 +108,24 @@ public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 		/*JPanel buttons = new JPanel(new BorderLayout());
 		buttons.add(this.buttonFinTourJ1, BorderLayout.NORTH);
 		buttons.add(this.buttonFinTourJ2, BorderLayout.SOUTH);*/
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		center.add(viewJ1, c);
+		center.add(viewJ2, c);
 		
-		center.add(viewJ1);
+		
+		/*
+		 * c.gridwidth = 1;
+		center.add(this.joueurView1, c);
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		center.add(this.buttonFinTourJ1, c);
+		c.gridwidth = 1;
 		//center.add(buttons);
-		center.add(viewJ2);
+		center.add(this.joueurView2, c);
+		c.gridwidth = GridBagConstraints.REMAINDER;
+		center.add(this.buttonFinTourJ2, c);
+		*/
 
 
 		this.joueurView1.getJoueur().setJoueurAdverse(this.joueurView2.getJoueur());

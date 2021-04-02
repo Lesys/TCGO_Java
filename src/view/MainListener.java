@@ -123,7 +123,7 @@ public class MainListener implements IEnsembleListener {
 	public void mouseEntered(MouseEvent e) { 
 		if (e.getSource() instanceof CarteJeu) {
 			CarteJeu carte = (CarteJeu)e.getSource();
-			Rectangle r = new Rectangle(carte.getX(), carte.getY() - 50, carte.getWidth(), carte.getHeight() + 50);
+			Rectangle r = new Rectangle(carte.getX(), carte.getY() - carte.getDiffSize(), carte.getWidth(), carte.getHeight() + carte.getDiffSize());
 			carte.setBounds(r);
 		}	
 	}
@@ -132,7 +132,7 @@ public class MainListener implements IEnsembleListener {
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() instanceof CarteJeu) {
 			CarteJeu carte = (CarteJeu)e.getSource();
-			Rectangle r = new Rectangle(carte.getX(), carte.getY() + 50, carte.getWidth(), carte.getHeight() - 50);
+			Rectangle r = new Rectangle(carte.getX(), carte.getY() + carte.getDiffSize(), carte.getWidth(), carte.getHeight() - carte.getDiffSize());
 			carte.setBounds(r);
 		}		
 	}

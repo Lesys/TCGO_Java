@@ -22,7 +22,7 @@ public class ListeCarteHeros extends ListeCarte {
 		};
 		
 		for (int i = 1; i <= 2; i++)
-			this.listeCartes.put(ref + String.format("%03d", i) + extension, tab[i - 1]);
+			this.listeCartes.put(tab[i - 1].getReference(), tab[i - 1]);
 		
 		for (Enumeration<Carte> e = this.elements(); e.hasMoreElements();)
 			System.err.println("CarteHeros: " + e.nextElement().infosToString());

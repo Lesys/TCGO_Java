@@ -1,6 +1,10 @@
 package carte;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.util.Dictionary;
 import java.util.EventListener;
 import java.util.List;
@@ -39,6 +43,11 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 	public Carte(String reference, String nom, String anime, StrategieEffet effet, int nbExemplaire) {
 		//super(reference);
 		super(reference);
+
+		this.resize();
+
+		this.diffSize = (int)Math.round(this.image.getHeight() / 5);
+	    
 		this.reference = reference;
 		this.nom = nom;
 		this.anime = anime;
@@ -169,4 +178,14 @@ public abstract class Carte extends ImagePanel implements Cloneable, MouseListen
 		System.err.println("La carte " + this.getClass() + " doit être détruite");
 		System.err.println("Nombre de listeners: " + this.getMouseListeners().length);
 	}
+/*
+    @Override
+    public Dimension getPreferredSize() {
+    	return new Dimension(this.image.getWidth(), this.image.getHeight());
+    }
+    
+    @Override
+    public Dimension getMinimumSize() {
+    	return new Dimension(this.image.getWidth(), this.image.getHeight());
+    }*/
 }

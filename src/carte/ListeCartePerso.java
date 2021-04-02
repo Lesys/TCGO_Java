@@ -19,12 +19,12 @@ public class ListeCartePerso extends ListeCarte {
 		// TODO automatiser avec la BDD
 		CartePerso[] tab = {new CartePerso("PD003.png", "CYaRon!", "Love Live!", null, 1, 2, 4, 5),
 			new CartePerso("PD004.png", "BiBi", "Love Live!", null, 1, 1, 2, 3),
-			new CartePerso("PD004.png", "Guilty Kiss", "Love Live!", null, 1, 2, 4, 6)
+			new CartePerso("PD005.png", "Guilty Kiss", "Love Live!", null, 1, 2, 4, 6)
 		};
 		
 		
 		for (int i = 1; i <= 3; i++)
-			this.listeCartes.put(ref + String.format("%03d", i) + extension, tab[i - 1]);
+			this.listeCartes.put(tab[i - 1].getReference(), tab[i - 1]);
 		
 		for (Enumeration<Carte> e = this.elements(); e.hasMoreElements();)
 			System.err.println("CartePerso: " + e.nextElement().infosToString());

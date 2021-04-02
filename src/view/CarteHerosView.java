@@ -1,6 +1,10 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 
 import carte.CarteHeros;
@@ -19,9 +23,12 @@ public class CarteHerosView extends DefaultView {
 		
 		this.strategieView = StrategieViewAfficherProprieteCarte.getInstance();
 
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		this.setPreferredSize(this.carteHeros.getPreferredSize());
+        
 		//this.add(new TextField("Carte héros"));
-		this.add(this.carteHeros, BorderLayout.CENTER);
+		this.add(this.carteHeros, c);
 		
 		this.addMouseListener(this);
 	}

@@ -2,6 +2,8 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
@@ -114,7 +116,8 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		this.setLayout(new GridLayout(3, 1));
 		
 		JPanel mainHeros = new JPanel();
-		mainHeros.setLayout(new GridLayout(2, 1));
+		//mainHeros.setLayout(new GridLayout(2, 1));
+		mainHeros.setLayout(new GridBagLayout());
 		
 		JPanel plateau = new JPanel();
 		plateau.setLayout(new GridLayout(1, 2));
@@ -127,15 +130,22 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 		
 		JPanel buttons = new JPanel(new BorderLayout());
 		buttons.add(this.buttonFinTour, BorderLayout.NORTH);
-
+		GridBagConstraints c = new GridBagConstraints();	
+		c.weightx = 1;
+		c.weighty = 1;
+        //c.fill = GridBagConstraints.BOTH;
+        //c.weightx = 0.8;
+		/*c.weightx = 1;
+		c.weighty = 1;
+		c.gridheight = 1;
+		c.gridwidth = 1;*/
 		// Ajout à la fenêtre pour affichage
 		if (num == 1) {
 
 			this.terrainView = new TerrainView(this.joueur.getTerrain(), false);
-			
-
-			mainHeros.add(this.carteHerosView);
-			mainHeros.add(this.mainView);
+			/*
+			mainHeros.add(this.carteHerosView, c);
+			mainHeros.add(this.mainView, c);
 			this.add(mainHeros);
 			this.add(plateau);
 			//this.add(buttons);
@@ -146,13 +156,38 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 			
 			defausseBannie.add(this.zoneBannieView);
 			defausseBannie.add(this.defausseView);
-			piocheDefausse.add(defausseBannie);
+			piocheDefausse.add(defausseBannie);*/
+
+			this.add(mainHeros);			
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+			//c.anchor = GridBagConstraints.CENTER;
+			mainHeros.add(this.carteHerosView, c);
+			
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+	        //c.gridwidth = GridBagConstraints.REMAINDER;
+			mainHeros.add(this.mainView, c);
+			c.gridwidth = 2;
+			mainHeros.add(this.piocheView, c);
+			
+	        //c.gridwidth = GridBagConstraints.REMAINDER;
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+			c.gridheight = 2;
+			mainHeros.add(this.terrainView, c);
+			//c.gridx = 5;
+			//c.gridy = 0;
+			c.gridheight = 1;
+			c.gridwidth = 1;
+			mainHeros.add(this.zoneBannieView, c);
+			//c.gridx = 4;
+			//c.gridy = 0;
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+			mainHeros.add(this.defausseView, c);
 			
 		}
 		else {
 
 			this.terrainView = new TerrainView(this.joueur.getTerrain(), true);
-
+/*
 			piocheDefausse.add(defausseBannie);
 			defausseBannie.add(this.defausseView);
 			defausseBannie.add(this.zoneBannieView);
@@ -163,9 +198,34 @@ public class JoueurView extends JPanel implements Observateur, ActionListener, F
 			plateau.add(piocheDefausse);
 			//this.add(buttons);
 			this.add(plateau);
+			this.add(mainHeros);*/
 			this.add(mainHeros);
-			mainHeros.add(this.mainView);
-			mainHeros.add(this.carteHerosView);
+			//c.gridx = 0;
+			//c.gridy = 0;		
+			
+			c.gridwidth = 1;
+			c.gridheight = 2;
+			
+	        //c.gridwidth = GridBagConstraints.REMAINDER;
+			mainHeros.add(this.terrainView, c);
+			//c.gridx = 4;
+			//c.gridy = 0;
+			c.gridheight = 1;
+			mainHeros.add(this.defausseView, c);
+			//c.gridx = 5;
+			//c.gridy = 0;
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+			mainHeros.add(this.zoneBannieView, c);
+			
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+			mainHeros.add(this.piocheView, c);
+
+	        c.gridwidth = GridBagConstraints.REMAINDER;
+
+			mainHeros.add(this.mainView, c);
+
+			c.anchor = GridBagConstraints.CENTER;
+			mainHeros.add(this.carteHerosView, c);
 		}
 		
 		// Gestion des events (Listeners)
