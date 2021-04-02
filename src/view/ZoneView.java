@@ -1,6 +1,6 @@
 package view;
 
-import zone.Zone;
+import ensemble.zone.Zone;
 
 public class ZoneView extends DefaultView {
 	/**

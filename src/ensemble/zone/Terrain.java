@@ -1,4 +1,4 @@
-package zone;
+package ensemble.zone;
 
 import carte.CarteJeu;
 import carte.CartePerso;

@@ -16,9 +16,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.FieldView;
 
 import carte.CarteJeu;
-import zone.Terrain;
-import zone.ZoneTerrain;
-import zone.ZoneTerrainAttaque;
+import ensemble.zone.Terrain;
+import ensemble.zone.ZoneTerrain;
+import ensemble.zone.ZoneTerrainAttaque;
 
 public class MyOptionPane {
 

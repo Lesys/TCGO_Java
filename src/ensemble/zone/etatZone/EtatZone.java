@@ -1,4 +1,4 @@
-package zone.etatZone;
+package ensemble.zone.etatZone;
 import carte.Carte;
 
 

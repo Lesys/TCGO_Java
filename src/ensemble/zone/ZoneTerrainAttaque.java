@@ -1,10 +1,10 @@
-package zone;
+package ensemble.zone;
 
 import java.util.ArrayList;
 
 import carte.Carte;
 import carte.CarteJeu;
-import zone.etatZone.EtatZoneAttaque;
+import ensemble.zone.etatZone.EtatZoneAttaque;
 
 public class ZoneTerrainAttaque extends ZoneTerrain {
 	public ZoneTerrainAttaque() {

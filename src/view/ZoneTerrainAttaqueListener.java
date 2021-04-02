@@ -12,8 +12,8 @@ import carte.NoMoreAttackException;
 import ensemble.Main;
 import joueur.Joueur;
 import joueur.NotYourTurnException;
-import zone.ZonePleineException;
-import zone.ZoneTerrain;
+import ensemble.zone.ZonePleineException;
+import ensemble.zone.ZoneTerrain;
 
 public class ZoneTerrainAttaqueListener extends ZoneListener {
 

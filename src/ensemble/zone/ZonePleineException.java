@@ -1,4 +1,4 @@
-package zone;
+package ensemble.zone;
 
 public class ZonePleineException extends Exception {
 	public ZonePleineException() {

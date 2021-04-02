@@ -1,11 +1,11 @@
-package zone;
+package ensemble.zone;
 
 import java.util.ArrayList;
 
 import carte.Carte;
 import carte.CarteJeu;
 import carte.CarteSort;
-import zone.etatZone.EtatZoneSort;
+import ensemble.zone.etatZone.EtatZoneSort;
 
 public class ZoneSort extends Zone {
 	public ZoneSort() {

@@ -1,11 +1,11 @@
-package zone;
+package ensemble.zone;
 
 import java.util.*;
 
 import carte.CarteJeu;
 import ensemble.EnsembleCarte;
 import view.IEnsembleListener;
-import zone.etatZone.EtatZone;
+import ensemble.zone.etatZone.EtatZone;
 
 public abstract class Zone extends EnsembleCarte {
 	protected EtatZone etatZone;

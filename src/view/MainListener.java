@@ -12,8 +12,8 @@ import carte.CartePerso;
 import carte.CarteSort;
 import ensemble.Main;
 import joueur.Joueur;
-import zone.Terrain;
-import zone.ZonePleineException;
+import ensemble.zone.Terrain;
+import ensemble.zone.ZonePleineException;
 
 public class MainListener implements IEnsembleListener {
 	private Main main;

@@ -3,7 +3,7 @@ package view;
 import java.awt.GridLayout;
 
 import carte.CarteJeu;
-import zone.ZoneTerrain;
+import ensemble.zone.ZoneTerrain;
 
 public class ZoneTerrainView extends ZoneView implements IEnsembleListener {
 	/**

@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import zone.Terrain;
+import ensemble.zone.Terrain;
 public class TerrainView extends DefaultView {
 	/**
 	 * 

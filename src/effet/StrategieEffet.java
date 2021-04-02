@@ -1,6 +1,6 @@
 package effet;
-import zone.ZoneTerrainAttaque;
-import zone.etatZone.EtatZoneAttaque;
+import ensemble.zone.ZoneTerrainAttaque;
+import ensemble.zone.etatZone.EtatZoneAttaque;
 import carte.Carte;
 import carte.CarteJeu;
 import carte.CartePerso;

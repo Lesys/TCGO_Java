@@ -1,5 +1,5 @@
 package carte;
-import zone.etatZone.EtatZone;
+import ensemble.zone.etatZone.EtatZone;
 
 import java.awt.event.MouseEvent;
 

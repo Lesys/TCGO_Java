@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 import ensemble.Main;
 import joueur.Joueur;
-import zone.ZoneSort;
+import ensemble.zone.ZoneSort;
 
 public class ZoneSortListener extends ZoneListener {
 	protected Main main;

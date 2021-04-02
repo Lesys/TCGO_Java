@@ -25,8 +25,8 @@ import view.JoueurView;
 import view.PiocheView;
 import view.TerrainView;
 import view.ZoneTerrainView;
-import zone.ZoneTerrain;
-import zone.ZoneTerrainAttaque;
+import ensemble.zone.ZoneTerrain;
+import ensemble.zone.ZoneTerrainAttaque;
 
 public class FenetreJeu extends JFrame implements ActionListener, Fenetre {
 	/** Le bouton de création des joueurs

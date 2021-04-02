@@ -3,7 +3,7 @@ package view;
 import java.awt.GridLayout;
 
 import carte.CarteJeu;
-import zone.Zone;
+import ensemble.zone.Zone;
 
 public class ZoneSortView extends ZoneView implements IEnsembleListener {
 	/**

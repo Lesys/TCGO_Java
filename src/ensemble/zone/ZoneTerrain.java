@@ -1,9 +1,9 @@
-package zone;
+package ensemble.zone;
 
 import carte.Carte;
 import carte.CarteJeu;
 import carte.CartePerso;
-import zone.etatZone.EtatZone;
+import ensemble.zone.etatZone.EtatZone;
 
 public abstract class ZoneTerrain extends Zone {
 

@@ -2,7 +2,7 @@ package view;
 
 import ensemble.Main;
 import joueur.Joueur;
-import zone.ZoneTerrain;
+import ensemble.zone.ZoneTerrain;
 
 public class ZoneTerrainDefenseListener extends ZoneListener {
 

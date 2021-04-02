@@ -9,7 +9,7 @@ import carte.CarteJeu;
 import carte.CartePerso;
 import ensemble.Main;
 import joueur.Joueur;
-import zone.Zone;
+import ensemble.zone.Zone;
 
 public class ZoneListener implements IEnsembleListener {
 	protected Main main;
